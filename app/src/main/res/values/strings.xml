@@ -34,4 +34,7 @@
     <string name="chat">Chat</string>
     <string name="wishlist">Wishlist</string>
     <string name="about">About</string>
+    <string name="nim">NIM</string>
+    <string name="whatsapp_number">Nomor Whatsapp</string>
+    <string name="confirm_password">Konfirmasi Password</string>
 </resources>
