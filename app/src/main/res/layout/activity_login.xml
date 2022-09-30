@@ -19,13 +19,13 @@
         android:id="@+id/imageView2"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:contentDescription="@string/icon_app"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view"
-        app:srcCompat="@drawable/ic_marketplace"
-        android:contentDescription="@string/icon_app" />
+        app:srcCompat="@drawable/ic_marketplace" />
 
     <TextView
         android:id="@+id/textView2"
