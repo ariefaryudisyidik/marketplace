@@ -9,13 +9,12 @@ plugins {
 
 android {
     namespace 'com.excode.marketplace'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.excode.marketplace"
         minSdk 21
-        //noinspection OldTargetApi
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
