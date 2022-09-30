@@ -17,6 +17,10 @@ class ProfileActivity : AppCompatActivity() {
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        navigateToHome()
+    }
+
+    private fun navigateToHome() {
         binding.ivBack.setOnClickListener {
             finish()
         }

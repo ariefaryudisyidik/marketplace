@@ -39,4 +39,7 @@
     <string name="edit">Ubah</string>
     <string name="save">Simpan</string>
     <string name="content_desc">Content Description</string>
+    <string name="about_us">Tentang Kami</string>
+    <string name="ukm_ikip">UKM IKIP</string>
+    <string name="desc_about_us">UKM KWU IKIP Siliwangi adalah UKM yang\nbergerak dalam bidang kewirausahaan\ndi IKIP Siliwangi.</string>
 </resources>
