@@ -29,10 +29,14 @@
     <string name="history">Riwayat</string>
     <string name="dummy_name">Jane Doe</string>
     <string name="profile">Profil</string>
+    <string name="my_profile">Profil Saya</string>
     <string name="chat">Chat</string>
     <string name="wishlist">Wishlist</string>
     <string name="about">About</string>
     <string name="nim">NIM</string>
     <string name="whatsapp_number">Nomor Whatsapp</string>
     <string name="confirm_password">Konfirmasi Password</string>
+    <string name="edit">Ubah</string>
+    <string name="save">Simpan</string>
+    <string name="content_desc">Content Description</string>
 </resources>
