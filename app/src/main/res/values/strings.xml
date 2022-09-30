@@ -29,4 +29,9 @@
     <string name="menu_slideshow">Slideshow</string>
     <string name="shopping">Belanjaan</string>
     <string name="history">Riwayat</string>
+    <string name="dummy_name">Jane Doe</string>
+    <string name="profile">Profil</string>
+    <string name="chat">Chat</string>
+    <string name="wishlist">Wishlist</string>
+    <string name="about">About</string>
 </resources>

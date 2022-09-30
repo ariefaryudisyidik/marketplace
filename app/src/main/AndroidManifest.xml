@@ -10,13 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Marketplace"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.market.main.MainActivity2"
+            android:exported="false"
+            android:theme="@style/Theme.Marketplace.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
 
         <activity
             android:name=".ui.market.main.MainActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
-
         <activity
             android:name=".ui.auth.register.RegisterActivity"
             android:exported="false"
