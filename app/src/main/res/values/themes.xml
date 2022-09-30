@@ -53,4 +53,27 @@
         <item name="android:textAllCaps">false</item>
         <item name="cornerRadius">16dp</item>
     </style>
+
+    <!-- SearchView -->
+    <style name="SearchView" parent="Widget.AppCompat.SearchView">
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:iconifiedByDefault">false</item>
+        <item name="android:queryHint">@string/hint_search</item>
+    </style>
+
+    <!-- Corner -->
+    <style name="cornerRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="Theme.Marketplace.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Marketplace.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Marketplace.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

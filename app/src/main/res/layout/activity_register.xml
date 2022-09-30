@@ -10,7 +10,7 @@
         android:id="@+id/view"
         android:layout_width="wrap_content"
         android:layout_height="110dp"
-        android:background="@drawable/shape_bar"
+        android:background="@drawable/bg_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,7 +24,8 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view"
-        app:srcCompat="@drawable/ic_marketplace" />
+        app:srcCompat="@drawable/ic_marketplace"
+        android:contentDescription="@string/icon_app" />
 
     <TextView
         android:id="@+id/textView2"

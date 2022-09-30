@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.excode.marketplace.databinding.ActivityLoginBinding
 import com.excode.marketplace.ui.auth.register.RegisterActivity
+import com.excode.marketplace.ui.market.main.MainActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -18,6 +19,13 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         navigateToRegister()
+        navigateToHome()
+    }
+
+    private fun navigateToHome() {
+        binding.btnLogin.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
     }
 
     private fun navigateToRegister() {

@@ -11,4 +11,22 @@
     <string name="register_account">Daftar Akun</string>
     <string name="register">Daftar</string>
     <string name="full_name">Nama Lengkap</string>
+    <string name="dummy_name_welcome">Hi, Jane Doe!</string>
+    <string name="container">Container</string>
+    <string name="hint_search">Apa yang anda cari?</string>
+    <string name="dummy_price">Rp. 300.000</string>
+    <string name="dummy_product">Pink Sneakers</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="shopping">Belanjaan</string>
+    <string name="history">Riwayat</string>
 </resources>
