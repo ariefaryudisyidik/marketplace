@@ -5,18 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary"
-    tools:context=".ui.market.about.AboutActivity">
-
-    <ImageView
-        android:id="@+id/iv_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:contentDescription="@string/content_desc"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView"
-        app:srcCompat="@drawable/ic_arrow_left" />
+    tools:context=".ui.market.about.AboutFragment">
 
     <TextView
         android:id="@+id/textView"
@@ -42,20 +31,20 @@
         android:id="@+id/imageView4"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:contentDescription="@string/content_desc"
         app:layout_constraintBottom_toTopOf="@+id/view4"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toTopOf="@+id/view4"
-        app:srcCompat="@drawable/ic_marketplace"
-        android:contentDescription="@string/content_desc" />
+        app:srcCompat="@drawable/ic_marketplace" />
 
     <TextView
         android:id="@+id/textView6"
-        android:textSize="20sp"
         style="@style/Text.Bold"
-        android:textColor="@color/primary_dark"
         android:layout_marginTop="40dp"
         android:text="@string/ukm_ikip"
+        android:textColor="@color/primary_dark"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/imageView4"
         app:layout_constraintStart_toStartOf="@+id/imageView4"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
@@ -65,11 +54,11 @@
         style="@style/Text.Normal"
         android:layout_width="0dp"
         android:layout_marginStart="32dp"
-        android:textColor="@color/primary_dark"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="32dp"
         android:gravity="center"
         android:text="@string/desc_about_us"
+        android:textColor="@color/primary_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />

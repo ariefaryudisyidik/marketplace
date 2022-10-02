@@ -11,27 +11,21 @@
         android:label="@string/home"
         tools:layout="@layout/fragment_home" />
 
-    <activity
+    <fragment
         android:id="@+id/nav_profile"
-        android:name="com.excode.marketplace.ui.market.profile.ProfileActivity"
+        android:name="com.excode.marketplace.ui.market.profile.ProfileFragment"
         android:label="@string/profile"
-        tools:layout="@layout/activity_profile" />
+        tools:layout="@layout/fragment_profile" />
 
-    <activity
-        android:id="@+id/nav_wishlist"
-        android:name="com.excode.marketplace.ui.market.wishlist.WishlistActivity"
-        android:label="@string/wishlist"
-        tools:layout="@layout/activity_wishlist" />
-
-    <activity
+    <fragment
         android:id="@+id/nav_chat"
-        android:name="com.excode.marketplace.ui.market.chat.ChatActivity"
+        android:name="com.excode.marketplace.ui.market.chat.ChatFragment"
         android:label="@string/chat"
-        tools:layout="@layout/activity_chat" />
+        tools:layout="@layout/fragment_chat" />
 
-    <activity
+    <fragment
         android:id="@+id/nav_about"
-        android:name="com.excode.marketplace.ui.market.about.AboutActivity"
+        android:name="com.excode.marketplace.ui.market.about.AboutFragment"
         android:label="@string/about"
-        tools:layout="@layout/activity_about" />
+        tools:layout="@layout/fragment_about" />
 </navigation>
