@@ -76,7 +76,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/til_full_name"
-            app:startIconDrawable="@drawable/ic_profile">
+            app:startIconDrawable="@drawable/ic_nim">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edt_nim"
