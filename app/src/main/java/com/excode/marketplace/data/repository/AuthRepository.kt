@@ -12,6 +12,8 @@ import com.excode.marketplace.data.remote.response.UserResponse
 import com.excode.marketplace.utils.Resource
 import com.excode.marketplace.utils.getMessage
 import com.excode.marketplace.utils.getString
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
@@ -50,6 +52,25 @@ class AuthRepository @Inject constructor(
         try {
             emit(Resource.Loading())
             val data = api.getUser(token)
+            emit(Resource.Success(data))
+        } catch (e: HttpException) {
+            val message = getMessage(e)
+            emit(Resource.Error(message))
+        } catch (e: IOException) {
+            emit(Resource.Error(getString(context, R.string.error_connection)))
+        }
+    }
+
+    fun updateUser(
+        token: String,
+        picture: MultipartBody.Part? = null,
+        username: RequestBody,
+        email: RequestBody,
+        phoneNumber: RequestBody,
+    ): LiveData<Resource<UserResponse>> = liveData {
+        try {
+            emit(Resource.Loading())
+            val data = api.updateUser(token, picture, username, email, phoneNumber)
             emit(Resource.Success(data))
         } catch (e: HttpException) {
             val message = getMessage(e)

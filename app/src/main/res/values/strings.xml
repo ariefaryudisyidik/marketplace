@@ -47,4 +47,5 @@
     <string name="error_connection">Koneksi bermasalah</string>
     <string name="username">Username</string>
     <string name="logout">Keluar</string>
+    <string name="error_upload_image">Update profile gagal</string>
 </resources>

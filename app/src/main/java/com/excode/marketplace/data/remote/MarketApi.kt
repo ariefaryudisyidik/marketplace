@@ -5,10 +5,9 @@ import com.excode.marketplace.data.remote.request.RegisterRequest
 import com.excode.marketplace.data.remote.response.AuthResponse
 import com.excode.marketplace.data.remote.response.ProductResponse
 import com.excode.marketplace.data.remote.response.UserResponse
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import retrofit2.http.*
 
 interface MarketApi {
 
@@ -22,7 +21,16 @@ interface MarketApi {
         @Body register: RegisterRequest
     ): AuthResponse
 
-//    @POST
+    @Multipart
+    @POST("user/profile")
+    suspend fun updateUser(
+        @Header("Authorization") token: String,
+        @Part picture: MultipartBody.Part? = null,
+        @Part("username") username: RequestBody,
+        @Part("email") email: RequestBody,
+        @Part("phone_number") phoneNumber: RequestBody,
+    ): UserResponse
+
 
     @GET("user/profile")
     suspend fun getUser(
