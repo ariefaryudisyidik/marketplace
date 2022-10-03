@@ -17,6 +17,8 @@ class MarketRepository @Inject constructor(
     private val context: Context,
     private val api: MarketApi
 ) {
+
+
     fun getProducts(): LiveData<Resource<ProductResponse>> = liveData {
         try {
             emit(Resource.Loading())

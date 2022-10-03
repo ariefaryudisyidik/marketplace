@@ -4,8 +4,10 @@ import com.excode.marketplace.data.remote.request.LoginRequest
 import com.excode.marketplace.data.remote.request.RegisterRequest
 import com.excode.marketplace.data.remote.response.AuthResponse
 import com.excode.marketplace.data.remote.response.ProductResponse
+import com.excode.marketplace.data.remote.response.UserResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface MarketApi {
@@ -19,6 +21,13 @@ interface MarketApi {
     suspend fun register(
         @Body register: RegisterRequest
     ): AuthResponse
+
+//    @POST
+
+    @GET("user/profile")
+    suspend fun getUser(
+        @Header("Authorization") token: String,
+    ): UserResponse
 
     @GET("list-shops")
     suspend fun getProducts(): ProductResponse

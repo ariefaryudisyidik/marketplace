@@ -6,11 +6,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.excode.marketplace.data.remote.request.LoginRequest
-import com.excode.marketplace.data.remote.response.User
 import com.excode.marketplace.databinding.ActivityLoginBinding
 import com.excode.marketplace.ui.auth.register.RegisterActivity
 import com.excode.marketplace.ui.market.main.MainActivity
-import com.excode.marketplace.utils.EXTRA_USER
 import com.excode.marketplace.utils.Resource
 import com.excode.marketplace.utils.dismissKeyboard
 import com.excode.marketplace.utils.toast
