@@ -44,4 +44,6 @@
     <string name="desc_about_us">UKM KWU IKIP Siliwangi adalah UKM yang\nbergerak dalam bidang kewirausahaan\ndi IKIP Siliwangi.</string>
     <string name="hello">Hallo!</string>
     <string name="dummy_number">4</string>
+    <string name="error_connection">Koneksi bermasalah</string>
+    <string name="username">Username</string>
 </resources>

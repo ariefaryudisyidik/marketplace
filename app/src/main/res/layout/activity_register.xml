@@ -43,7 +43,7 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_full_name"
+            android:id="@+id/til_username"
             style="@style/TextInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -56,16 +56,16 @@
             app:startIconDrawable="@drawable/ic_profile">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_full_name"
+                android:id="@+id/edt_username"
                 style="@style/EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/full_name"
+                android:hint="@string/username"
                 android:inputType="textPersonName" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_nim"
+            android:id="@+id/til_phone_number"
             style="@style/TextInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -74,33 +74,11 @@
             android:layout_marginEnd="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_full_name"
-            app:startIconDrawable="@drawable/ic_nim">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_nim"
-                style="@style/EditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/nim"
-                android:inputType="number" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_whatsapp_number"
-            style="@style/TextInputLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_nim"
+            app:layout_constraintTop_toBottomOf="@+id/til_username"
             app:startIconDrawable="@drawable/ic_whatsapp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_whatsapp_number"
+                android:id="@+id/edt_phone_number"
                 style="@style/EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -118,7 +96,7 @@
             android:layout_marginEnd="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_whatsapp_number"
+            app:layout_constraintTop_toBottomOf="@id/til_phone_number"
             app:startIconDrawable="@drawable/ic_email">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -201,6 +179,17 @@
             app:layout_constraintBottom_toBottomOf="@id/textView"
             app:layout_constraintStart_toEndOf="@id/textView"
             app:layout_constraintTop_toTopOf="@+id/textView" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"

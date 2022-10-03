@@ -4,9 +4,16 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
+import com.excode.marketplace.data.remote.request.LoginRequest
+import com.excode.marketplace.data.remote.response.User
 import com.excode.marketplace.databinding.ActivityLoginBinding
 import com.excode.marketplace.ui.auth.register.RegisterActivity
 import com.excode.marketplace.ui.market.main.MainActivity
+import com.excode.marketplace.utils.EXTRA_USER
+import com.excode.marketplace.utils.Resource
+import com.excode.marketplace.utils.dismissKeyboard
+import com.excode.marketplace.utils.toast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,14 +27,58 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        login()
         navigateToRegister()
-        navigateToHome()
+    }
+
+    private fun login() {
+        binding.apply {
+            btnLogin.setOnClickListener {
+                val username = edtUsername.text.toString()
+                val password = edtPassword.text.toString()
+
+                val loginRequest = LoginRequest(username, password)
+                it.dismissKeyboard()
+
+                viewModel.login(loginRequest).observe(this@LoginActivity) { result ->
+                    when (result) {
+                        is Resource.Loading -> {
+                            showLoading(true)
+                        }
+                        is Resource.Success -> {
+                            showLoading(false)
+                            val data = result.data
+                            if (data != null) {
+                                val token = data.data.token
+                                viewModel.saveLoginStatus(token, true)
+                                navigateToHome()
+                            }
+                        }
+                        is Resource.Error -> {
+                            showLoading(false)
+                            showMessage(result.message)
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
+    private fun showLoading(state: Boolean) {
+        binding.progressBar.isVisible = state
+        binding.btnLogin.isEnabled = !state
+        binding.tvRegister.isEnabled = !state
+        window.decorView.clearFocus()
+    }
+
+    private fun showMessage(message: String?) {
+        toast(message)
     }
 
     private fun navigateToHome() {
-        binding.btnLogin.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
-        }
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     private fun navigateToRegister() {
