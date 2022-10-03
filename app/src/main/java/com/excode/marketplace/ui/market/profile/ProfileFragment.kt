@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
@@ -14,10 +13,7 @@ import com.excode.marketplace.R
 import com.excode.marketplace.data.remote.response.User
 import com.excode.marketplace.databinding.FragmentProfileBinding
 import com.excode.marketplace.ui.auth.login.LoginActivity
-import com.excode.marketplace.utils.Resource
-import com.excode.marketplace.utils.reduceFileImage
-import com.excode.marketplace.utils.toast
-import com.excode.marketplace.utils.uriToFile
+import com.excode.marketplace.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 
@@ -144,12 +140,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private fun showLoading(state: Boolean) {
-        binding.apply {
-            progressBar.isVisible = state
-            btnUpdate.isEnabled = !state
-            btnLogout.isEnabled = !state
-        }
-
+        if (state) showProgress(requireContext())
+        else hideProgress()
         requireActivity().window.decorView.clearFocus()
     }
 

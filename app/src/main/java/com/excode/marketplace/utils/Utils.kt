@@ -5,6 +5,9 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Environment
+import android.view.LayoutInflater
+import androidx.appcompat.app.AlertDialog
+import com.excode.marketplace.R
 import com.excode.marketplace.data.remote.response.DefaultResponse
 import com.google.gson.Gson
 import retrofit2.HttpException
@@ -70,4 +73,20 @@ fun reduceFileImage(file: File): File {
     bitmap.compress(Bitmap.CompressFormat.JPEG, compressQuality, FileOutputStream(file))
     return file
 }
+
+var dialog: AlertDialog? = null
+
+fun showProgress(context: Context) {
+    val view = LayoutInflater.from(context).inflate(R.layout.progress_dialog, null)
+    dialog = AlertDialog.Builder(context).create()
+    dialog?.setView(view)
+    dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
+    dialog?.setCancelable(false)
+    dialog?.show()
+}
+
+fun hideProgress() {
+    dialog?.dismiss()
+}
+
 

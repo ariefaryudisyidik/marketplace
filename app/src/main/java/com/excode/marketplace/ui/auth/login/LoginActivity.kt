@@ -4,14 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import com.excode.marketplace.data.remote.request.LoginRequest
 import com.excode.marketplace.databinding.ActivityLoginBinding
 import com.excode.marketplace.ui.auth.register.RegisterActivity
 import com.excode.marketplace.ui.market.main.MainActivity
-import com.excode.marketplace.utils.Resource
-import com.excode.marketplace.utils.dismissKeyboard
-import com.excode.marketplace.utils.toast
+import com.excode.marketplace.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -64,9 +61,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun showLoading(state: Boolean) {
-        binding.progressBar.isVisible = state
-        binding.btnLogin.isEnabled = !state
-        binding.tvRegister.isEnabled = !state
+        if (state) showProgress(this)
+        else hideProgress()
         window.decorView.clearFocus()
     }
 

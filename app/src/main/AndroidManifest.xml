@@ -21,9 +21,9 @@
         <activity
             android:name=".ui.market.main.MainActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Marketplace.NoActionBar"
+            android:windowSoftInputMode="adjustPan"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.auth.register.RegisterActivity"

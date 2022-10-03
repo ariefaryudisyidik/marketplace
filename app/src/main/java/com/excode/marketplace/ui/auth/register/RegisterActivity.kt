@@ -3,12 +3,9 @@ package com.excode.marketplace.ui.auth.register
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import com.excode.marketplace.data.remote.request.RegisterRequest
 import com.excode.marketplace.databinding.ActivityRegisterBinding
-import com.excode.marketplace.utils.Resource
-import com.excode.marketplace.utils.dismissKeyboard
-import com.excode.marketplace.utils.toast
+import com.excode.marketplace.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -63,8 +60,8 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun showLoading(state: Boolean) {
-        binding.progressBar.isVisible = state
-        binding.btnRegister.isEnabled = !state
+        if (state) showProgress(this)
+        else hideProgress()
         window.decorView.clearFocus()
     }
 
