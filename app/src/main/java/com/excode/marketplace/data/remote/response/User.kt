@@ -21,5 +21,4 @@ data class User(
     val createdAt: String,
     @SerializedName("updated_at")
     val updatedAt: String,
-    val shop: @RawValue Shop
-): Parcelable
+) : Parcelable
