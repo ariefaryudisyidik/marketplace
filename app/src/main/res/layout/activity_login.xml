@@ -93,12 +93,29 @@
         app:layout_constraintTop_toBottomOf="@+id/til_password" />
 
     <TextView
-        android:id="@+id/tv_register"
+        android:id="@+id/textView"
         style="@style/Text.Normal"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="-40dp"
         android:text="@string/no_have_account"
-        app:layout_constraintEnd_toEndOf="@+id/btn_login"
-        app:layout_constraintStart_toStartOf="@+id/btn_login"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+
+    <TextView
+        android:id="@+id/tv_register"
+        style="@style/Text.Normal"
+        android:layout_marginStart="4dp"
+        android:text="@string/register"
+        android:textColor="@color/blue"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

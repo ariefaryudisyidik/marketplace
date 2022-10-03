@@ -6,14 +6,14 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="enter">Masuk</string>
-    <string name="have_account">Sudah punya akun? Masuk</string>
-    <string name="no_have_account">Belum punya akun? Daftar</string>
+    <string name="have_account">Sudah punya akun?</string>
+    <string name="no_have_account">Belum punya akun?</string>
     <string name="register_account">Daftar Akun</string>
     <string name="register">Daftar</string>
     <string name="full_name">Nama Lengkap</string>
     <string name="dummy_name_welcome">Hi, Jane Doe!</string>
     <string name="container">Container</string>
-    <string name="hint_search">Apa yang anda cari?</string>
+    <string name="hint_search">Apa yang kamu cari?</string>
     <string name="dummy_price">Rp. 300.000</string>
     <string name="dummy_product">Pink Sneakers</string>
     <string name="title_activity_main2">MainActivity2</string>
@@ -30,7 +30,7 @@
     <string name="dummy_name">Jane Doe</string>
     <string name="profile">Profil</string>
     <string name="my_profile">Profil Saya</string>
-    <string name="chat">Chat</string>
+    <string name="chat">Pesan</string>
     <string name="wishlist">Wishlist</string>
     <string name="about">About</string>
     <string name="nim">NIM</string>
@@ -42,4 +42,6 @@
     <string name="about_us">Tentang Kami</string>
     <string name="ukm_ikip">UKM IKIP</string>
     <string name="desc_about_us">UKM KWU IKIP Siliwangi adalah UKM yang\nbergerak dalam bidang kewirausahaan\ndi IKIP Siliwangi.</string>
+    <string name="hello">Hallo!</string>
+    <string name="dummy_number">4</string>
 </resources>
