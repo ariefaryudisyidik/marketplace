@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="8dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginBottom="4dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?selectableItemBackground"
+    app:cardCornerRadius="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/btn_plus"
+            style="@style/CircleButton"
+            android:layout_marginStart="16dp"
+            android:text="@string/plus"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_minus"
+            app:layout_constraintStart_toEndOf="@+id/tv_product_count"
+            app:layout_constraintTop_toTopOf="@+id/btn_minus" />
+
+        <ImageView
+            android:id="@+id/iv_profile"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:contentDescription="@string/description"
+            android:src="@drawable/img_product"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_product_name"
+            style="@style/Text.Bold"
+            android:layout_width="0dp"
+            android:layout_marginStart="16dp"
+            android:text="@string/dummy_product"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_product_price"
+            app:layout_constraintEnd_toStartOf="@+id/check_box"
+            app:layout_constraintStart_toEndOf="@+id/iv_profile" />
+
+        <TextView
+            android:id="@+id/tv_product_price"
+            style="@style/Text.Normal"
+            android:layout_width="0dp"
+            android:text="@string/dummy_price"
+            android:textColor="?android:textColorSecondary"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_product_name"
+            app:layout_constraintStart_toStartOf="@+id/tv_product_name"
+            app:layout_constraintTop_toBottomOf="@id/guideline" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="38dp" />
+
+        <CheckBox
+            android:id="@+id/check_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/btn_minus"
+            style="@style/CircleButton"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/black"
+            android:text="@string/minus"
+            app:layout_constraintStart_toStartOf="@+id/tv_product_price"
+            app:layout_constraintTop_toBottomOf="@+id/tv_product_price" />
+
+        <TextView
+            android:id="@+id/tv_product_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/dummy_number"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_minus"
+            app:layout_constraintStart_toEndOf="@+id/btn_minus"
+            app:layout_constraintTop_toTopOf="@+id/btn_minus" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
