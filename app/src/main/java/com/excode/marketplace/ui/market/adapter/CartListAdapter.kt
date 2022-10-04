@@ -43,43 +43,35 @@ class CartListAdapter(
                 tvProductPrice.text = data.item.price.withCurrencyFormat()
 
                 var count = 1
-                var checkPrice = 0
                 var price = data.item.price.toInt()
-                var totalPrice = price
-                totalPrice += price
 
                 btnPlus.setOnClickListener {
                     count++
                     price += data.item.price.toInt()
-//                    tvProductCount.text = count.toString()
                     tvProductCount.text = "$count == $price"
                     if (checkBox.isChecked) {
                         viewModel.getPrice(price)
                     }
+//                    tvProductCount.text = count.toString()
                 }
 
                 btnMinus.setOnClickListener {
                     if (count > 1) {
                         count--
                         price -= data.item.price.toInt()
-//                        tvProductCount.text = count.toString()
                         tvProductCount.text = "$count == $price"
                         if (checkBox.isChecked) {
                             viewModel.getPrice(price)
                         }
+//                        tvProductCount.text = count.toString()
                     }
                 }
 
                 checkBox.setOnClickListener {
                     if (checkBox.isChecked) {
-//                        checkPrice += data.item.price.toInt()
-//                        context.toast(price.toString())
-//                        price = data.item.price.toInt()
                         viewModel.getPrice(price)
                     } else {
                         viewModel.getPrice(0)
-//                        context.toast(price.toString())
-//                        checkPrice -= data.item.price.toInt()
                     }
                 }
             }
