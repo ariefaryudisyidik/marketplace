@@ -6,24 +6,18 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Item(
+data class Shop(
     val id: Int,
-    @SerializedName("shop_id")
-    val shopId: String,
+    @SerializedName("user_id")
+    val userId: String,
     val name: String,
     val description: String,
-    val price: String,
-    val stock: String,
-    val sold: String,
-    @SerializedName("picture_1")
-    val picture1: String?,
-    @SerializedName("picture_2")
-    val picture2: String?,
-    @SerializedName("picture_3")
-    val picture3: String?,
+    @SerializedName("banner_image")
+    val bannerImage: String?,
     val status: String,
     @SerializedName("created_at")
     val createdAt: String?,
     @SerializedName("updated_at")
-    val updatedAt: String
+    val updatedAt: String,
+    val user: User
 ) : Parcelable
