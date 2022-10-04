@@ -3,6 +3,7 @@ package com.excode.marketplace.ui.market.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -10,9 +11,14 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.excode.marketplace.data.remote.response.model.Cart
 import com.excode.marketplace.databinding.ItemCartBinding
+import com.excode.marketplace.ui.market.product.cart.CartViewModel
 import com.excode.marketplace.utils.withCurrencyFormat
 
-class CartListAdapter(private val context: Context) :
+class CartListAdapter(
+    private val context: Context,
+    private val viewModel: CartViewModel,
+    private val lifecycleOwner: LifecycleOwner
+) :
     ListAdapter<Cart, CartListAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -36,21 +42,41 @@ class CartListAdapter(private val context: Context) :
                 tvProductName.text = data.item.name
                 tvProductPrice.text = data.item.price.withCurrencyFormat()
 
-                var count = 0
+                var count = 1
+                var checkPrice = 0
+                var price = data.item.price.toInt()
                 btnPlus.setOnClickListener {
                     count++
-                    tvProductCount.text = count.toString()
+                    price += data.item.price.toInt()
+//                    tvProductCount.text = count.toString()
+                    tvProductCount.text = "$count == $price"
+                    if (checkBox.isChecked) {
+                        viewModel.getPrice(price)
+                    }
                 }
 
                 btnMinus.setOnClickListener {
-                    count--
-                    tvProductCount.text = count.toString()
+                    if (count > 1) {
+                        count--
+                        price -= data.item.price.toInt()
+//                        tvProductCount.text = count.toString()
+                        tvProductCount.text = "$count == $price"
+                        if (checkBox.isChecked) {
+                            viewModel.getPrice(price)
+                        }
+                    }
                 }
 
-                root.setOnClickListener {
-//                        val intent = Intent(context, DetailProductActivity::class.java)
-//                        intent.putExtra(EXTRA_PRODUCT, marketData)
-//                        context.startActivity(intent)
+                checkBox.setOnClickListener {
+                    if (checkBox.isChecked) {
+//                        checkPrice += data.item.price.toInt()
+//                        context.toast(price.toString())
+                        viewModel.getPrice(price)
+                    } else {
+//                        context.toast(price.toString())
+//                        checkPrice -= data.item.price.toInt()
+                        viewModel.getPrice(0)
+                    }
                 }
             }
         }

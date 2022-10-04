@@ -5,10 +5,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.excode.marketplace.databinding.ActivityCartBinding
 import com.excode.marketplace.ui.market.adapter.CartListAdapter
-import com.excode.marketplace.utils.Resource
-import com.excode.marketplace.utils.hideProgress
-import com.excode.marketplace.utils.showProgress
-import com.excode.marketplace.utils.toast
+import com.excode.marketplace.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,10 +22,15 @@ class CartActivity : AppCompatActivity() {
 
         setupRecyclerView()
         getToken()
+        setTotal()
+    }
+
+    private fun setTotal() {
+
     }
 
     private fun setupRecyclerView() {
-        adapter = CartListAdapter(this)
+        adapter = CartListAdapter(this, viewModel, this)
         binding.rvCart.adapter = adapter
     }
 
@@ -48,7 +50,16 @@ class CartActivity : AppCompatActivity() {
                     showLoading(false)
                     val data = result.data
                     if (data != null) {
+//                        var price = 0
+//                        data.data.cart.map {
+//                            price += it.item.price.toInt()
+//                            binding.tvTotal.text = price.toString().withCurrencyFormat()
+//                        }
+                        viewModel.price.observe(this) {
+                            binding.tvTotal.text = it.toString().withCurrencyFormat()
+                        }
                         adapter.submitList(data.data.cart)
+
                     }
                 }
                 is Resource.Error -> {
