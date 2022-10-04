@@ -1,5 +1,6 @@
 package com.excode.marketplace.ui.market.home.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -7,6 +8,8 @@ import androidx.fragment.app.viewModels
 import com.excode.marketplace.R
 import com.excode.marketplace.databinding.FragmentHomeBinding
 import com.excode.marketplace.ui.market.adapter.ProductGridAdapter
+import com.excode.marketplace.ui.market.home.wishlist.WishlistActivity
+import com.excode.marketplace.ui.market.product.cart.CartActivity
 import com.excode.marketplace.utils.Resource
 import com.excode.marketplace.utils.hideProgress
 import com.excode.marketplace.utils.showProgress
@@ -28,6 +31,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         setupRecyclerView()
         getToken()
+        navigateToCart()
+        navigateToWishList()
     }
 
     private fun setupRecyclerView() {
@@ -89,5 +94,17 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun showMessage(message: String?) {
         requireActivity().toast(message)
+    }
+
+    private fun navigateToWishList() {
+        binding.ivWishlist.setOnClickListener {
+            startActivity(Intent(requireContext(), WishlistActivity::class.java))
+        }
+    }
+
+    private fun navigateToCart() {
+        binding.ivCart.setOnClickListener {
+            startActivity(Intent(requireContext(), CartActivity::class.java))
+        }
     }
 }

@@ -15,11 +15,6 @@
             android:title="@string/profile" />
 
         <item
-            android:id="@+id/nav_chat"
-            android:icon="@drawable/ic_chat"
-            android:title="@string/chat" />
-
-        <item
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_about"
             android:title="@string/about" />
