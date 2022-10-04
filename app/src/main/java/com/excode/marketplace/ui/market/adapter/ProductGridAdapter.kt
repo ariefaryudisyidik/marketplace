@@ -1,4 +1,4 @@
-package com.excode.marketplace.ui.market.home.main
+package com.excode.marketplace.ui.market.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -15,8 +15,8 @@ import com.excode.marketplace.ui.market.product.detail.DetailProductActivity
 import com.excode.marketplace.utils.EXTRA_PRODUCT
 import com.excode.marketplace.utils.withCurrencyFormat
 
-class HomeAdapter(private val context: Context) :
-    ListAdapter<MarketData, HomeAdapter.ViewHolder>(DIFF_CALLBACK) {
+class ProductGridAdapter(private val context: Context) :
+    ListAdapter<MarketData, ProductGridAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemProductBinding.inflate(LayoutInflater.from(parent.context), parent, false)

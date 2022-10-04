@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.excode.marketplace.R
 import com.excode.marketplace.databinding.FragmentHomeBinding
+import com.excode.marketplace.ui.market.adapter.ProductGridAdapter
 import com.excode.marketplace.utils.Resource
 import com.excode.marketplace.utils.hideProgress
 import com.excode.marketplace.utils.showProgress
@@ -19,7 +20,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private val binding get() = _binding!!
 
     private val viewModel: HomeViewModel by viewModels()
-    private lateinit var adapter: HomeAdapter
+    private lateinit var adapter: ProductGridAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -30,7 +31,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun setupRecyclerView() {
-        adapter = HomeAdapter(requireContext())
+        adapter = ProductGridAdapter(requireContext())
         binding.rvProduct.adapter = adapter
     }
 
