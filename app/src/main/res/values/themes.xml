@@ -65,15 +65,13 @@
     <!-- Corner -->
     <style name="cornerRounded">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">8dp</item>
+        <item name="cornerSize">56dp</item>
     </style>
 
-    <style name="Theme.Marketplace.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+    <!-- ProgressBar -->
+    <style name="ProgressBar" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:background">@drawable/bg_circle</item>
+        <item name="android:elevation">2dp</item>
+        <item name="android:padding">8dp</item>
     </style>
-
-    <style name="Theme.Marketplace.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="Theme.Marketplace.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

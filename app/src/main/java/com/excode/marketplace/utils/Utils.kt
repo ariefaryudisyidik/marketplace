@@ -77,7 +77,7 @@ fun reduceFileImage(file: File): File {
 var dialog: AlertDialog? = null
 
 fun showProgress(context: Context) {
-    val view = LayoutInflater.from(context).inflate(R.layout.progress_dialog, null)
+    val view = LayoutInflater.from(context).inflate(R.layout.layout_progress, null)
     dialog = AlertDialog.Builder(context).create()
     dialog?.setView(view)
     dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
