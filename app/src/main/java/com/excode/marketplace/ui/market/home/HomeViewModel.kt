@@ -1,4 +1,4 @@
-package com.excode.marketplace.ui.market.home.main
+package com.excode.marketplace.ui.market.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

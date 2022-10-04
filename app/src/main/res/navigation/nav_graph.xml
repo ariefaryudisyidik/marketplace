@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.excode.marketplace.ui.market.home.main.HomeFragment"
+        android:name="com.excode.marketplace.ui.market.home.HomeFragment"
         android:label="@string/home"
         tools:layout="@layout/fragment_home" />
 

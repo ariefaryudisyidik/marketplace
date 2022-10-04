@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="?colorOnPrimary"
     android:contentDescription="@string/container"
-    tools:context=".ui.market.home.main.HomeFragment">
+    tools:context=".ui.market.home.HomeFragment">
 
     <View
         android:id="@+id/view2"

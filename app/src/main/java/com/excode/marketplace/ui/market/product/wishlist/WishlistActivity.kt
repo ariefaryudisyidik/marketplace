@@ -1,4 +1,4 @@
-package com.excode.marketplace.ui.market.home.wishlist
+package com.excode.marketplace.ui.market.product.wishlist
 
 import android.os.Bundle
 import androidx.activity.viewModels

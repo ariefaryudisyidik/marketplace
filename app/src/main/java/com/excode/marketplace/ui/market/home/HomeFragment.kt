@@ -1,4 +1,4 @@
-package com.excode.marketplace.ui.market.home.main
+package com.excode.marketplace.ui.market.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,7 +8,7 @@ import androidx.fragment.app.viewModels
 import com.excode.marketplace.R
 import com.excode.marketplace.databinding.FragmentHomeBinding
 import com.excode.marketplace.ui.market.adapter.ProductGridAdapter
-import com.excode.marketplace.ui.market.home.wishlist.WishlistActivity
+import com.excode.marketplace.ui.market.product.wishlist.WishlistActivity
 import com.excode.marketplace.ui.market.product.cart.CartActivity
 import com.excode.marketplace.utils.Resource
 import com.excode.marketplace.utils.hideProgress
