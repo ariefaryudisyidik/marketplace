@@ -48,4 +48,7 @@
     <string name="username">Username</string>
     <string name="logout">Keluar</string>
     <string name="error_upload_image">Update profile gagal</string>
+    <string name="cart">Keranjang</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sed tellus scelerisque, convallis augue nec, vehicula eros. Suspendisse eget libero mollis, fringilla ipsum eget, placerat tellus. Aliquam pretium enim ut metus eleifend sodales. Cras libero enim, posuere a accumsan ut, cursus pellentesque lectus. Proin sed ipsum sit amet nisi accumsan iaculis in ut quam. Morbi eget ullamcorper ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt erat eu tortor posuere auctor. Quisque augue risus, ullamcorper non quam consequat, iaculis sagittis eros.</string>
+    <string name="description">Deskripsi</string>
 </resources>
