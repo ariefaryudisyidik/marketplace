@@ -43,12 +43,14 @@
             style="@style/Text.Bold"
             android:layout_width="0dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:text="@string/dummy_product"
             android:textColor="?android:attr/textColorPrimary"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/tv_product_price"
             app:layout_constraintEnd_toStartOf="@+id/check_box"
-            app:layout_constraintStart_toEndOf="@+id/iv_profile" />
+            app:layout_constraintStart_toEndOf="@+id/iv_profile"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_product_price"
@@ -80,8 +82,10 @@
             android:id="@+id/btn_minus"
             style="@style/CircleButton"
             android:layout_marginTop="16dp"
-            android:textColor="@color/black"
+            android:layout_marginBottom="8dp"
             android:text="@string/minus"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tv_product_price"
             app:layout_constraintTop_toBottomOf="@+id/tv_product_price" />
 
