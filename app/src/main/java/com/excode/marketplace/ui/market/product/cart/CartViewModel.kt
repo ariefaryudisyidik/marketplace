@@ -17,18 +17,4 @@ class CartViewModel @Inject constructor(
     val token = pref.getToken.asLiveData()
 
     fun getCarts(token: String) = repository.getCarts(token)
-
-    val counter: MutableLiveData<Int> = MutableLiveData(1)
-
-    fun incrementCount() {
-        counter.postValue(counter.value?.plus(1))
-    }
-
-    fun decrementCount() {
-        counter.value?.let {
-            if (it > 1) {
-                counter.postValue(counter.value?.minus(1))
-            }
-        }
-    }
 }

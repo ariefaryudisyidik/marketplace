@@ -28,7 +28,7 @@ class CartActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        adapter = CartListAdapter(this, viewModel, this)
+        adapter = CartListAdapter(this)
         binding.rvCart.adapter = adapter
     }
 
