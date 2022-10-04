@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="8dp"
@@ -19,11 +20,11 @@
         <TextView
             android:id="@+id/btn_plus"
             style="@style/CircleButton"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="48dp"
             android:text="@string/plus"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@+id/btn_minus"
-            app:layout_constraintStart_toEndOf="@+id/tv_product_count"
+            app:layout_constraintStart_toEndOf="@+id/btn_minus"
             app:layout_constraintTop_toTopOf="@+id/btn_minus" />
 
         <ImageView
@@ -91,10 +92,10 @@
             android:id="@+id/tv_product_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:text="@string/dummy_initial_number"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@+id/btn_minus"
+            app:layout_constraintEnd_toStartOf="@+id/btn_plus"
             app:layout_constraintStart_toEndOf="@+id/btn_minus"
             app:layout_constraintTop_toTopOf="@+id/btn_minus" />
     </androidx.constraintlayout.widget.ConstraintLayout>

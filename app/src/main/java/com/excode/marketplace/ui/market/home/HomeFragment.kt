@@ -3,6 +3,7 @@ package com.excode.marketplace.ui.market.home
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.excode.marketplace.R
@@ -31,10 +32,26 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         setupRecyclerView()
         getToken()
+        searchAction()
         navigateToCart()
         navigateToWishList()
     }
 
+    private fun searchAction() {
+        binding.apply {
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(username: String): Boolean {
+//                    viewModel.searchUser(username)
+                    searchView.clearFocus()
+                    return true
+                }
+
+                override fun onQueryTextChange(newText: String): Boolean {
+                    return false
+                }
+            })
+        }
+    }
     private fun setupRecyclerView() {
         adapter = ProductGridAdapter(requireContext())
         binding.rvProduct.adapter = adapter
@@ -45,6 +62,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             getProducts(token)
             getUser(token)
         }
+    }
+
+    private fun showProduct() {
+//        viewModel.users.observe(this) { showUser(it) }
     }
 
     private fun getProducts(token: String) {

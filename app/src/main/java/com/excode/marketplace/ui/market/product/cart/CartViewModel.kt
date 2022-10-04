@@ -1,5 +1,6 @@
 package com.excode.marketplace.ui.market.product.cart
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.excode.marketplace.data.local.datastore.UserPreference
@@ -16,4 +17,18 @@ class CartViewModel @Inject constructor(
     val token = pref.getToken.asLiveData()
 
     fun getCarts(token: String) = repository.getCarts(token)
+
+    val counter: MutableLiveData<Int> = MutableLiveData(1)
+
+    fun incrementCount() {
+        counter.postValue(counter.value?.plus(1))
+    }
+
+    fun decrementCount() {
+        counter.value?.let {
+            if (it > 1) {
+                counter.postValue(counter.value?.minus(1))
+            }
+        }
+    }
 }

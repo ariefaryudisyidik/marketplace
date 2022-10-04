@@ -1,7 +1,6 @@
 package com.excode.marketplace.ui.market.product.cart
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.excode.marketplace.databinding.ActivityCartBinding
@@ -29,7 +28,7 @@ class CartActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        adapter = CartListAdapter(this)
+        adapter = CartListAdapter(this, viewModel, this)
         binding.rvCart.adapter = adapter
     }
 
