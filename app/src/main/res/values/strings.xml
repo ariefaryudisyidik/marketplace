@@ -53,4 +53,6 @@
     <string name="description">Deskripsi</string>
     <string name="minus">-</string>
     <string name="plus">+</string>
+    <string name="total">Total</string>
+    <string name="buy">Bayar</string>
 </resources>
