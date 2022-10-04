@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="8dp"
@@ -10,7 +9,6 @@
     android:layout_marginBottom="4dp"
     android:clickable="true"
     android:focusable="true"
-    android:foreground="?selectableItemBackground"
     app:cardCornerRadius="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,7 +27,7 @@
             app:layout_constraintTop_toTopOf="@+id/btn_minus" />
 
         <ImageView
-            android:id="@+id/iv_profile"
+            android:id="@+id/iv_product"
             android:layout_width="76dp"
             android:layout_height="76dp"
             android:contentDescription="@string/description"
@@ -49,7 +47,7 @@
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/tv_product_price"
             app:layout_constraintEnd_toStartOf="@+id/check_box"
-            app:layout_constraintStart_toEndOf="@+id/iv_profile"
+            app:layout_constraintStart_toEndOf="@+id/iv_product"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -94,7 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="@string/dummy_number"
+            android:text="@string/dummy_initial_number"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@+id/btn_minus"
             app:layout_constraintStart_toEndOf="@+id/btn_minus"

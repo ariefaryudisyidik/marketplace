@@ -1,11 +1,13 @@
 package com.excode.marketplace.ui.market.product.detail
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.excode.marketplace.data.remote.response.data.MarketData
 import com.excode.marketplace.databinding.ActivityDetailProductBinding
+import com.excode.marketplace.ui.market.product.cart.CartActivity
 import com.excode.marketplace.utils.EXTRA_PRODUCT
 import com.excode.marketplace.utils.withCurrencyFormat
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,6 +25,13 @@ class DetailProductActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         showDetail()
+        addToCart()
+    }
+
+    private fun addToCart() {
+        binding.btnCart.setOnClickListener {
+            startActivity(Intent(this, CartActivity::class.java))
+        }
     }
 
     private fun showDetail() {

@@ -27,5 +27,5 @@ data class Item(
     val createdAt: String?,
     @SerializedName("updated_at")
     val updatedAt: String,
-    val shop: @RawValue Shop
+    val shop: @RawValue Shop?
 ) : Parcelable

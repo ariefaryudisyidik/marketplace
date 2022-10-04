@@ -3,6 +3,7 @@ package com.excode.marketplace.data.remote
 import com.excode.marketplace.data.remote.request.LoginRequest
 import com.excode.marketplace.data.remote.request.RegisterRequest
 import com.excode.marketplace.data.remote.response.AuthResponse
+import com.excode.marketplace.data.remote.response.CartResponse
 import com.excode.marketplace.data.remote.response.MarketResponse
 import com.excode.marketplace.data.remote.response.UserResponse
 import okhttp3.MultipartBody
@@ -45,5 +46,5 @@ interface MarketApi {
     @GET("carts")
     suspend fun getCarts(
         @Header("Authorization") token: String
-    ): MarketResponse
+    ): CartResponse
 }
