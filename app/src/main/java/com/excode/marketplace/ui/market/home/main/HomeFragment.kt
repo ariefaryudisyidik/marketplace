@@ -37,6 +37,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun getToken() {
         viewModel.token.observe(viewLifecycleOwner) { token ->
             getProducts(token)
+            getUser(token)
         }
     }
 
@@ -59,6 +60,22 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         showMessage(result.message)
                     }
                 }
+            }
+        }
+    }
+
+    private fun getUser(token: String) {
+        viewModel.getUser(token).observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is Resource.Loading -> {}
+                is Resource.Success -> {
+                    val data = result.data
+                    if (data != null) {
+                        val user = data.data.user
+                        binding.tvUsername.text = getString(R.string.user_welcome, user.username)
+                    }
+                }
+                is Resource.Error -> {}
             }
         }
     }

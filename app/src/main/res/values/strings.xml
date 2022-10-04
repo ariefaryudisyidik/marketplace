@@ -11,7 +11,7 @@
     <string name="register_account">Daftar Akun</string>
     <string name="register">Daftar</string>
     <string name="full_name">Nama Lengkap</string>
-    <string name="dummy_name_welcome">Hi, Jane Doe!</string>
+    <string name="user_welcome">Hi, %s!</string>
     <string name="container">Container</string>
     <string name="hint_search">Apa yang kamu cari?</string>
     <string name="dummy_price">Rp. 300.000</string>
