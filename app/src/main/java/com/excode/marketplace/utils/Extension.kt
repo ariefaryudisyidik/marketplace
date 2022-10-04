@@ -5,6 +5,7 @@ import android.util.Patterns
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -22,6 +23,13 @@ fun String.withDateFormat(): String {
     val date = format.parse(this) as Date
     format.timeZone = TimeZone.getDefault()
     return SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.getDefault()).format(date)
+}
+
+fun String.withCurrencyFormat(): String {
+    val priceOnRupiah = this.toDouble()
+    val localeID = Locale("id", "ID")
+    val mCurrencyFormat = NumberFormat.getCurrencyInstance(localeID)
+    return mCurrencyFormat.format(priceOnRupiah).replace("Rp", "Rp ").replace(",00", "")
 }
 
 fun View.dismissKeyboard() {

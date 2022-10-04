@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.excode.marketplace.data.remote.response.data.MarketData
 import com.excode.marketplace.databinding.ItemProductBinding
+import com.excode.marketplace.utils.withCurrencyFormat
 
 class HomeAdapter(private val context: Context) :
     ListAdapter<MarketData, HomeAdapter.ViewHolder>(DIFF_CALLBACK) {
@@ -32,7 +33,7 @@ class HomeAdapter(private val context: Context) :
                     Glide.with(context).load(item.picture1).centerCrop()
                         .transition(DrawableTransitionOptions.withCrossFade()).into(ivProduct)
                     tvProductName.text = item.name
-                    tvProductPrice.text = item.price
+                    tvProductPrice.text = item.price.withCurrencyFormat()
                 }
 
 //                root.setOnClickListener {
