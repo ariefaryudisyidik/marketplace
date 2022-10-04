@@ -1,9 +1,13 @@
 package com.excode.marketplace.data.remote.response.data
 
+import android.os.Parcelable
 import com.excode.marketplace.data.remote.response.model.Item
 import com.excode.marketplace.data.remote.response.model.User
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 
+@Parcelize
 data class MarketData(
     val id: Int,
     @SerializedName("user_id")
@@ -17,6 +21,6 @@ data class MarketData(
     val createdAt: String?,
     @SerializedName("updated_at")
     val updatedAt: String,
-    val items: List<Item>,
+    val items: @RawValue List<Item>,
     val user: User
-)
+) : Parcelable

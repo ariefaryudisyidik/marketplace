@@ -1,6 +1,7 @@
 package com.excode.marketplace.ui.market.home.main
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -10,6 +11,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.excode.marketplace.data.remote.response.data.MarketData
 import com.excode.marketplace.databinding.ItemProductBinding
+import com.excode.marketplace.ui.market.product.detail.DetailProductActivity
+import com.excode.marketplace.utils.EXTRA_PRODUCT
 import com.excode.marketplace.utils.withCurrencyFormat
 
 class HomeAdapter(private val context: Context) :
@@ -36,18 +39,11 @@ class HomeAdapter(private val context: Context) :
                     tvProductPrice.text = item.price.withCurrencyFormat()
                 }
 
-//                root.setOnClickListener {
-//                    val intent = Intent(context, DetailActivity::class.java)
-//                    intent.putExtra(EXTRA_STORY, storyEntity)
-//
-//                    val optionsCompat: ActivityOptionsCompat =
-//                        ActivityOptionsCompat.makeSceneTransitionAnimation(
-//                            context as Activity,
-//                            Pair(ivItemPhoto, getString(context, R.string.photo)),
-//                            Pair(tvItemName, getString(context, R.string.name)),
-//                        )
-//                    context.startActivity(intent, optionsCompat.toBundle())
-//                }
+                root.setOnClickListener {
+                    val intent = Intent(context, DetailProductActivity::class.java)
+                    intent.putExtra(EXTRA_PRODUCT, marketData)
+                    context.startActivity(intent)
+                }
             }
         }
     }

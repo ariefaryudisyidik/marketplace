@@ -1,8 +1,11 @@
 package com.excode.marketplace.data.remote.response.model
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Item(
     val id: Int,
     @SerializedName("shop_id")
@@ -15,12 +18,12 @@ data class Item(
     @SerializedName("picture_1")
     val picture1: String?,
     @SerializedName("picture_2")
-    val picture2: Any?,
+    val picture2: String?,
     @SerializedName("picture_3")
-    val picture3: Any?,
+    val picture3: String?,
     val status: String,
     @SerializedName("created_at")
     val createdAt: String?,
     @SerializedName("updated_at")
     val updatedAt: String
-)
+) : Parcelable
