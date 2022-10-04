@@ -63,9 +63,14 @@
     </style>
 
     <!-- Corner -->
-    <style name="cornerRounded">
+    <style name="cornerCircle">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">56dp</item>
+    </style>
+
+    <style name="cornerRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
     </style>
 
     <!-- ProgressBar -->

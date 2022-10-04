@@ -1,4 +1,4 @@
-package com.excode.marketplace.ui.market.main
+package com.excode.marketplace.ui.main
 
 import androidx.lifecycle.ViewModel
 

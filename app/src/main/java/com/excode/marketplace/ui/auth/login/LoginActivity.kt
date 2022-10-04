@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.excode.marketplace.data.remote.request.LoginRequest
 import com.excode.marketplace.databinding.ActivityLoginBinding
 import com.excode.marketplace.ui.auth.register.RegisterActivity
-import com.excode.marketplace.ui.market.main.MainActivity
+import com.excode.marketplace.ui.main.MainActivity
 import com.excode.marketplace.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 

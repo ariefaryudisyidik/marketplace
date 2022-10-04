@@ -1,4 +1,4 @@
-package com.excode.marketplace.ui.market.product
+package com.excode.marketplace.ui.market.product.detail
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -7,10 +7,10 @@ import com.excode.marketplace.databinding.ActivityProductBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProductActivity : AppCompatActivity() {
+class DetailProductActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityProductBinding
-    private val viewModel: ProductViewModel by viewModels()
+    private val viewModel: DetailProductViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

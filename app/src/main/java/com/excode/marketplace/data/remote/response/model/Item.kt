@@ -1,4 +1,4 @@
-package com.excode.marketplace.data.remote.response
+package com.excode.marketplace.data.remote.response.model
 
 
 import com.google.gson.annotations.SerializedName

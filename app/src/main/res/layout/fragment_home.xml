@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="?colorOnPrimary"
     android:contentDescription="@string/container"
-    tools:context=".ui.market.home.HomeFragment">
+    tools:context=".ui.market.home.main.HomeFragment">
 
     <View
         android:id="@+id/view2"
@@ -79,6 +79,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:id="@+id/rv_product"
         android:layout_marginTop="32dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -96,7 +97,8 @@
         android:layout_marginEnd="16dp"
         android:src="@drawable/ic_shopping_cart"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/content_desc" />
 
     <ImageView
         android:id="@+id/imageView6"
@@ -106,5 +108,6 @@
         android:src="@drawable/ic_wishlist"
         app:layout_constraintBottom_toBottomOf="@+id/imageView5"
         app:layout_constraintEnd_toStartOf="@+id/imageView5"
-        app:layout_constraintTop_toTopOf="@+id/imageView5" />
+        app:layout_constraintTop_toTopOf="@+id/imageView5"
+        android:contentDescription="@string/content_desc" />
 </androidx.constraintlayout.widget.ConstraintLayout>

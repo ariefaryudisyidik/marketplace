@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.excode.marketplace.databinding.ActivitySplashBinding
 import com.excode.marketplace.ui.auth.login.LoginActivity
-import com.excode.marketplace.ui.market.main.MainActivity
+import com.excode.marketplace.ui.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

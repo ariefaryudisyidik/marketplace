@@ -1,8 +1,10 @@
-package com.excode.marketplace.data.remote.response
+package com.excode.marketplace.data.remote.response.data
 
+import com.excode.marketplace.data.remote.response.model.Item
+import com.excode.marketplace.data.remote.response.model.User
 import com.google.gson.annotations.SerializedName
 
-data class ProductData(
+data class MarketData(
     val id: Int,
     @SerializedName("user_id")
     val userId: String,

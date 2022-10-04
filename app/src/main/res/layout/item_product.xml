@@ -27,7 +27,7 @@
             app:shapeAppearanceOverlay="@style/cornerRounded" />
 
         <TextView
-            android:id="@+id/product_name_tv"
+            android:id="@+id/tv_product_name"
             style="@style/Text.Normal"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
             app:layout_constraintTop_toBottomOf="@+id/iv_product" />
 
         <TextView
-            android:id="@+id/product_category_tv"
+            android:id="@+id/tv_product_price"
             style="@style/Text.Normal"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -58,6 +58,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/product_name_tv" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_product_name" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.excode.marketplace.R
-import com.excode.marketplace.data.remote.response.User
+import com.excode.marketplace.data.remote.response.model.User
 import com.excode.marketplace.databinding.FragmentProfileBinding
 import com.excode.marketplace.ui.auth.login.LoginActivity
 import com.excode.marketplace.utils.*
