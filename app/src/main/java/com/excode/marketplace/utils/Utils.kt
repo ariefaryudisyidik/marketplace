@@ -17,6 +17,7 @@ import java.io.FileOutputStream
 import java.io.InputStream
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.concurrent.schedule
 
 private val timeStamp = SimpleDateFormat(
     FILENAME_FORMAT,
@@ -83,6 +84,10 @@ fun showProgress(context: Context) {
     dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
     dialog?.setCancelable(false)
     dialog?.show()
+
+    Timer().schedule(5000) {
+        dialog?.dismiss()
+    }
 }
 
 fun hideProgress() {
