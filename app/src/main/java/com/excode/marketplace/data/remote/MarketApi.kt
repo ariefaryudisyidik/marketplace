@@ -48,4 +48,16 @@ interface MarketApi {
     suspend fun getWishlist(
         @Header("Authorization") token: String
     ): WishlistResponse
+
+    @POST("wishlists/{id}")
+    suspend fun addWishlist(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int
+    ): WishlistResponse
+
+    @DELETE("wishlists/{id}")
+    suspend fun deleteWishlist(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int
+    ): WishlistResponse
 }

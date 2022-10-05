@@ -59,5 +59,29 @@ class MarketRepository @Inject constructor(
         }
     }
 
+    fun addWishlist(token: String, id: Int): LiveData<Resource<WishlistResponse>> = liveData {
+        try {
+            emit(Resource.Loading())
+            val data = api.addWishlist(token, id)
+            emit(Resource.Success(data))
+        } catch (e: HttpException) {
+            val message = getMessage(e)
+            emit(Resource.Error(message))
+        } catch (e: IOException) {
+            emit(Resource.Error(getString(context, R.string.error_connection)))
+        }
+    }
 
+    fun deleteWishlist(token: String, id: Int): LiveData<Resource<WishlistResponse>> = liveData {
+        try {
+            emit(Resource.Loading())
+            val data = api.deleteWishlist(token, id)
+            emit(Resource.Success(data))
+        } catch (e: HttpException) {
+            val message = getMessage(e)
+            emit(Resource.Error(message))
+        } catch (e: IOException) {
+            emit(Resource.Error(getString(context, R.string.error_connection)))
+        }
+    }
 }

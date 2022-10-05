@@ -29,13 +29,33 @@ class WishlistActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        adapter = WishlistAdapter(this)
+        adapter = WishlistAdapter(this, viewModel, this)
         binding.rvWishlist.adapter = adapter
     }
 
     private fun getToken() {
         viewModel.token.observe(this) { token ->
             getWishlist(token)
+//            viewModel.wishlistId.observe(this) { id ->
+//                deleteWishlist(token, id)
+//            }
+        }
+    }
+
+    private fun deleteWishlist(token: String, id: Int) {
+        viewModel.addWishList(token, id).observe(this) { result ->
+            when (result) {
+                is Resource.Loading -> {
+                }
+                is Resource.Success -> {
+                    showMessage(result.message)
+                }
+                is Resource.Error -> {
+                    if (token.isNotEmpty()) {
+                        showMessage(result.message)
+                    }
+                }
+            }
         }
     }
 
