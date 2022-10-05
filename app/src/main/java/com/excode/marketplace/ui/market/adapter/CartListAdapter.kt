@@ -12,6 +12,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.excode.marketplace.data.remote.response.model.Cart
 import com.excode.marketplace.databinding.ItemCartBinding
 import com.excode.marketplace.ui.market.product.cart.CartViewModel
+import com.excode.marketplace.utils.toast
 import com.excode.marketplace.utils.withCurrencyFormat
 
 class CartListAdapter(
@@ -45,6 +46,16 @@ class CartListAdapter(
                 var count = 1
                 var price = data.item.price.toInt()
 
+                var temp = 0
+                checkBox.setOnClickListener {
+                    if (checkBox.isChecked) {
+                        temp++
+                        context.toast(temp.toString())
+                    } else {
+                        temp--
+                    }
+                }
+
                 btnPlus.setOnClickListener {
                     count++
                     price += data.item.price.toInt()
@@ -66,21 +77,12 @@ class CartListAdapter(
 //                        tvProductCount.text = count.toString()
                     }
                 }
-
-                checkBox.setOnClickListener {
-                    if (checkBox.isChecked) {
-                        viewModel.getPrice(price)
-                    } else {
-                        viewModel.getPrice(0)
-                    }
-                }
             }
         }
     }
 
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Cart>() {
-
             override fun areItemsTheSame(oldItem: Cart, newItem: Cart) =
                 oldItem.id == newItem.id
 
