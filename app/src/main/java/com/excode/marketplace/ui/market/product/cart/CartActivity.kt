@@ -1,10 +1,12 @@
 package com.excode.marketplace.ui.market.product.cart
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.excode.marketplace.databinding.ActivityCartBinding
 import com.excode.marketplace.ui.market.adapter.CartListAdapter
+import com.excode.marketplace.ui.market.product.buy.BuyActivity
 import com.excode.marketplace.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,6 +24,18 @@ class CartActivity : AppCompatActivity() {
 
         setupRecyclerView()
         getToken()
+        buy()
+    }
+
+    private fun buy() {
+        binding.apply {
+            btnBuy.setOnClickListener {
+                val totalPrice = tvTotal.text.toString()
+                val intent = Intent(this@CartActivity, BuyActivity::class.java)
+                intent.putExtra(EXTRA_CART, totalPrice)
+                startActivity(intent)
+            }
+        }
     }
 
     private fun setTotalPrice() {
