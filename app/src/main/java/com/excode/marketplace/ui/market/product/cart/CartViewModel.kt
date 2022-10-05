@@ -18,7 +18,7 @@ class CartViewModel @Inject constructor(
 
     fun getCarts(token: String) = repository.getCarts(token)
 
-    val counter: MutableLiveData<Int> = MutableLiveData(1)
+    val counter: MutableLiveData<Int> = MutableLiveData(0)
     val price: MutableLiveData<Int> = MutableLiveData(0)
 
     fun getPrice(value: Int) {
@@ -26,14 +26,10 @@ class CartViewModel @Inject constructor(
     }
 
     fun incrementCount() {
-        counter.postValue(counter.value)
+        counter.postValue(counter.value?.plus(1))
     }
 
     fun decrementCount() {
-        counter.value?.let {
-            if (it > 1) {
-                counter.postValue(counter.value?.minus(1))
-            }
-        }
+        counter.postValue(counter.value?.minus(1))
     }
 }

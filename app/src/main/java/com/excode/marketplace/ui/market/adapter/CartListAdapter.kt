@@ -47,12 +47,17 @@ class CartListAdapter(
                 var price = data.item.price.toInt()
 
                 var temp = 0
+
                 checkBox.setOnClickListener {
                     if (checkBox.isChecked) {
-                        temp++
-                        context.toast(temp.toString())
+                        viewModel.incrementCount()
+//                        temp++
                     } else {
-                        temp--
+                        viewModel.decrementCount()
+//                        temp--
+                    }
+                    viewModel.counter.observe(lifecycleOwner) {
+                        context.toast(it.toString())
                     }
                 }
 
