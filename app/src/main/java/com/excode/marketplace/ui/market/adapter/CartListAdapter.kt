@@ -43,15 +43,13 @@ class CartListAdapter(
                 tvProductPrice.text = data.item.price.withCurrencyFormat()
 
                 var count = 1
-                var price = data.item.price.toInt()
-
-                var temp = 0
+                val price = data.item.price.toInt()
 
                 checkBox.setOnClickListener {
                     if (checkBox.isChecked) {
-                        viewModel.incrementCount(price)
+                        viewModel.incrementCount(count * price)
                     } else {
-                        viewModel.decrementCount(price)
+                        viewModel.decrementCount(count * price)
                     }
                     viewModel.counter.observe(lifecycleOwner) {
                         viewModel.getPrice(it)
@@ -60,29 +58,25 @@ class CartListAdapter(
 
                 btnPlus.setOnClickListener {
                     count++
-//                    price += data.item.price.toInt()
-                    viewModel.incrementCount(price)
                     tvProductCount.text = count.toString()
                     if (checkBox.isChecked) {
+                        viewModel.incrementCount(price)
                         viewModel.counter.observe(lifecycleOwner) {
                             viewModel.getPrice(it)
                         }
                     }
-//                    tvProductCount.text = count.toString()
                 }
 
                 btnMinus.setOnClickListener {
                     if (count > 1) {
                         count--
-//                        price -= data.item.price.toInt()
-                        viewModel.decrementCount(price)
                         tvProductCount.text = count.toString()
                         if (checkBox.isChecked) {
+                            viewModel.decrementCount(price)
                             viewModel.counter.observe(lifecycleOwner) {
                                 viewModel.getPrice(it)
                             }
                         }
-//                        tvProductCount.text = count.toString()
                     }
                 }
             }
