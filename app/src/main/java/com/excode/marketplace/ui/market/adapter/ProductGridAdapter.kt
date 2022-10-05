@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.excode.marketplace.R
 import com.excode.marketplace.data.remote.response.data.MarketData
 import com.excode.marketplace.databinding.ItemProductBinding
 import com.excode.marketplace.ui.market.product.detail.DetailProductActivity
@@ -33,8 +34,11 @@ class ProductGridAdapter(private val context: Context) :
         fun bind(marketData: MarketData) {
             binding.apply {
                 marketData.items.map { item ->
-                    Glide.with(context).load(item.picture1).centerCrop()
-                        .transition(DrawableTransitionOptions.withCrossFade()).into(ivProduct)
+                    Glide.with(context)
+                        .load(item.picture1)
+                        .centerCrop()
+                        .placeholder(R.drawable.ic_image)
+                        .into(ivProduct)
                     tvProductName.text = item.name
                     tvProductPrice.text = item.price.withCurrencyFormat()
                 }
