@@ -82,10 +82,10 @@ fun showProgress(context: Context) {
     dialog = AlertDialog.Builder(context).create()
     dialog?.setView(view)
     dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
-    dialog?.setCancelable(true)
+    dialog?.setCancelable(false)
     dialog?.show()
 
-    Timer().schedule(5000) {
+    Timer().schedule(10000) {
         dialog?.dismiss()
     }
 }

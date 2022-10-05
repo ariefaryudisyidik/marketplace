@@ -7,6 +7,7 @@ import com.excode.marketplace.R
 import com.excode.marketplace.data.remote.MarketApi
 import com.excode.marketplace.data.remote.response.CartResponse
 import com.excode.marketplace.data.remote.response.MarketResponse
+import com.excode.marketplace.data.remote.response.WishlistResponse
 import com.excode.marketplace.utils.Resource
 import com.excode.marketplace.utils.getMessage
 import com.excode.marketplace.utils.getString
@@ -36,6 +37,19 @@ class MarketRepository @Inject constructor(
         try {
             emit(Resource.Loading())
             val data = api.getCarts(token)
+            emit(Resource.Success(data))
+        } catch (e: HttpException) {
+            val message = getMessage(e)
+            emit(Resource.Error(message))
+        } catch (e: IOException) {
+            emit(Resource.Error(getString(context, R.string.error_connection)))
+        }
+    }
+
+    fun getWishlist(token: String): LiveData<Resource<WishlistResponse>> = liveData {
+        try {
+            emit(Resource.Loading())
+            val data = api.getWishlist(token)
             emit(Resource.Success(data))
         } catch (e: HttpException) {
             val message = getMessage(e)

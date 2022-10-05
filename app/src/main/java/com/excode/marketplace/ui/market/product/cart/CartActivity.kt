@@ -22,11 +22,12 @@ class CartActivity : AppCompatActivity() {
 
         setupRecyclerView()
         getToken()
-        setTotal()
     }
 
-    private fun setTotal() {
-
+    private fun setTotalPrice() {
+        viewModel.price.observe(this) {
+            binding.tvTotal.text = it.toString().withCurrencyFormat()
+        }
     }
 
     private fun setupRecyclerView() {
@@ -50,16 +51,8 @@ class CartActivity : AppCompatActivity() {
                     showLoading(false)
                     val data = result.data
                     if (data != null) {
-//                        var price = 0
-//                        data.data.cart.map {
-//                            price += it.item.price.toInt()
-//                            binding.tvTotal.text = price.toString().withCurrencyFormat()
-//                        }
-                        viewModel.price.observe(this) {
-                            binding.tvTotal.text = it.toString().withCurrencyFormat()
-                        }
                         adapter.submitList(data.data.cart)
-
+                        setTotalPrice()
                     }
                 }
                 is Resource.Error -> {

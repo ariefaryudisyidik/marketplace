@@ -2,10 +2,7 @@ package com.excode.marketplace.data.remote
 
 import com.excode.marketplace.data.remote.request.LoginRequest
 import com.excode.marketplace.data.remote.request.RegisterRequest
-import com.excode.marketplace.data.remote.response.AuthResponse
-import com.excode.marketplace.data.remote.response.CartResponse
-import com.excode.marketplace.data.remote.response.MarketResponse
-import com.excode.marketplace.data.remote.response.UserResponse
+import com.excode.marketplace.data.remote.response.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.*
@@ -32,7 +29,6 @@ interface MarketApi {
         @Part("phone_number") phoneNumber: RequestBody,
     ): UserResponse
 
-
     @GET("user/profile")
     suspend fun getUser(
         @Header("Authorization") token: String,
@@ -47,4 +43,9 @@ interface MarketApi {
     suspend fun getCarts(
         @Header("Authorization") token: String
     ): CartResponse
+
+    @GET("wishlists")
+    suspend fun getWishlist(
+        @Header("Authorization") token: String
+    ): WishlistResponse
 }
