@@ -12,7 +12,6 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.excode.marketplace.data.remote.response.model.Cart
 import com.excode.marketplace.databinding.ItemCartBinding
 import com.excode.marketplace.ui.market.product.cart.CartViewModel
-import com.excode.marketplace.utils.toast
 import com.excode.marketplace.utils.withCurrencyFormat
 
 class CartListAdapter(
@@ -50,23 +49,24 @@ class CartListAdapter(
 
                 checkBox.setOnClickListener {
                     if (checkBox.isChecked) {
-                        viewModel.incrementCount()
-//                        temp++
+                        viewModel.incrementCount(price)
                     } else {
-                        viewModel.decrementCount()
-//                        temp--
+                        viewModel.decrementCount(price)
                     }
                     viewModel.counter.observe(lifecycleOwner) {
-                        context.toast(it.toString())
+                        viewModel.getPrice(it)
                     }
                 }
 
                 btnPlus.setOnClickListener {
                     count++
-                    price += data.item.price.toInt()
-                    tvProductCount.text = "$count == $price"
+//                    price += data.item.price.toInt()
+                    viewModel.incrementCount(price)
+                    tvProductCount.text = count.toString()
                     if (checkBox.isChecked) {
-                        viewModel.getPrice(price)
+                        viewModel.counter.observe(lifecycleOwner) {
+                            viewModel.getPrice(it)
+                        }
                     }
 //                    tvProductCount.text = count.toString()
                 }
@@ -74,10 +74,13 @@ class CartListAdapter(
                 btnMinus.setOnClickListener {
                     if (count > 1) {
                         count--
-                        price -= data.item.price.toInt()
-                        tvProductCount.text = "$count == $price"
+//                        price -= data.item.price.toInt()
+                        viewModel.decrementCount(price)
+                        tvProductCount.text = count.toString()
                         if (checkBox.isChecked) {
-                            viewModel.getPrice(price)
+                            viewModel.counter.observe(lifecycleOwner) {
+                                viewModel.getPrice(it)
+                            }
                         }
 //                        tvProductCount.text = count.toString()
                     }

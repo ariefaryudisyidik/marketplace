@@ -25,11 +25,11 @@ class CartViewModel @Inject constructor(
         price.postValue(value)
     }
 
-    fun incrementCount() {
-        counter.postValue(counter.value?.plus(1))
+    fun incrementCount(value: Int) {
+        counter.postValue(counter.value?.plus(value))
     }
 
-    fun decrementCount() {
-        counter.postValue(counter.value?.minus(1))
+    fun decrementCount(value: Int) {
+        counter.postValue(counter.value?.minus(value))
     }
 }
