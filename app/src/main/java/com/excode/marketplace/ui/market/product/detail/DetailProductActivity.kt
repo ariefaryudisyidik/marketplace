@@ -53,7 +53,9 @@ class DetailProductActivity : AppCompatActivity() {
             val data = result.data?.data
             val wishlists = data?.wishlist
             var isWishlist = false
+            var wishlistId = 0
             wishlists?.map { wishlist ->
+                wishlistId = wishlist.id
                 isWishlist = if (wishlist.itemId.toInt() == itemId) {
                     binding.btnWishlist.setCompoundDrawablesRelativeWithIntrinsicBounds(
                         R.drawable.ic_wishlist_white_fill, 0, 0, 0
@@ -65,20 +67,37 @@ class DetailProductActivity : AppCompatActivity() {
                     )
                     false
                 }
+
+                binding.btnWishlist.setOnClickListener {
+                    toast(isWishlist.toString())
+                    isWishlist = if (isWishlist) {
+                        binding.btnWishlist.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                            R.drawable.ic_wishlist_white, 0, 0, 0
+                        )
+                        viewModel.deleteWishlist(token, wishlistId).observe(this) {}
+                        false
+                    } else {
+                        binding.btnWishlist.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                            R.drawable.ic_wishlist_white_fill, 0, 0, 0
+                        )
+                        true
+                    }
+                }
             }
 
             binding.btnWishlist.setOnClickListener {
+                toast(isWishlist.toString())
                 isWishlist = if (isWishlist) {
                     binding.btnWishlist.setCompoundDrawablesRelativeWithIntrinsicBounds(
                         R.drawable.ic_wishlist_white, 0, 0, 0
                     )
+                    viewModel.deleteWishlist(token, wishlistId).observe(this) {}
                     false
-                    //                    viewModel.deleteWishlist(token, itemId).observe(this) {}
                 } else {
                     binding.btnWishlist.setCompoundDrawablesRelativeWithIntrinsicBounds(
                         R.drawable.ic_wishlist_white_fill, 0, 0, 0
                     )
-//                    viewModel.addWishlist(token, itemId).observe(this) {}
+                    viewModel.addWishlist(token, itemId).observe(this) {}
                     true
                 }
             }
