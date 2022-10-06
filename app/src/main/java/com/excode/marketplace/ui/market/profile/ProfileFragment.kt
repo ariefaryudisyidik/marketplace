@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
@@ -55,10 +56,20 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                     if (data != null) {
                         val user = data.data.user
                         showUser(user)
+                        binding.apply {
+                            btnUpdate.isVisible = true
+                            btnLogout.isVisible = true
+                            layoutEmpty.root.isVisible = false
+                        }
                     }
                 }
                 is Resource.Error -> {
                     showLoading(false)
+                    binding.apply {
+                        btnUpdate.isVisible = false
+                        btnLogout.isVisible = false
+                        layoutEmpty.root.isVisible = true
+                    }
                     if (token.isNotEmpty()) {
                         showMessage(result.message)
                     }

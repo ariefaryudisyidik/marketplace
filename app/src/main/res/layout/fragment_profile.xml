@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.market.profile.ProfileFragment">
 
-    <TextView
-        android:id="@+id/textView"
-        style="@style/Text.Normal"
-        android:layout_marginTop="24dp"
-        android:text="@string/my_profile"
-        android:textColor="@color/primary_dark"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <View
         android:id="@+id/view4"
         android:layout_width="wrap_content"
@@ -122,6 +111,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="12dp"
         android:text="@string/update"
+        android:visibility="gone"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/til_email" />
 
@@ -132,6 +122,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:text="@string/logout"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/btn_update"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/btn_update" />
@@ -153,4 +144,26 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
+
+    <include
+        android:id="@+id/layout_empty"
+        layout="@layout/layout_empty"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        style="@style/Text.Normal"
+        android:layout_marginTop="24dp"
+        android:text="@string/my_profile"
+        android:textColor="@color/primary_dark"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

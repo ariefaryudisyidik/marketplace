@@ -3,6 +3,7 @@ package com.excode.marketplace.ui.market.product.wishlist
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.excode.marketplace.databinding.ActivityWishlistBinding
 import com.excode.marketplace.ui.market.adapter.WishlistAdapter
 import com.excode.marketplace.utils.Resource
@@ -70,10 +71,14 @@ class WishlistActivity : AppCompatActivity() {
                     val data = result.data
                     if (data != null) {
                         adapter.submitList(data.data.wishlist)
+                        binding.layoutEmpty.root.isVisible = false
+
                     }
                 }
                 is Resource.Error -> {
                     showLoading(false)
+                    binding.layoutEmpty.root.isVisible = true
+
                     if (token.isNotEmpty()) {
                         showMessage(result.message)
                     }

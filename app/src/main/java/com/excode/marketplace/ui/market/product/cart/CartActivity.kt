@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.excode.marketplace.databinding.ActivityCartBinding
 import com.excode.marketplace.ui.market.adapter.CartListAdapter
 import com.excode.marketplace.ui.market.product.buy.BuyActivity
@@ -67,6 +68,10 @@ class CartActivity : AppCompatActivity() {
                     if (data != null) {
                         adapter.submitList(data.data.cart)
                         setTotalPrice()
+                        binding.apply {
+                            btnBuy.isVisible = true
+                            layoutEmpty.root.isVisible = false
+                        }
                     }
                 }
                 is Resource.Error -> {
@@ -74,6 +79,7 @@ class CartActivity : AppCompatActivity() {
                     if (token.isNotEmpty()) {
                         showMessage(result.message)
                     }
+                    binding.layoutEmpty.root.isVisible = true
                 }
             }
         }
