@@ -4,15 +4,17 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.excode.marketplace.R
 import com.excode.marketplace.data.remote.response.data.MarketData
 import com.excode.marketplace.databinding.ActivityDetailProductBinding
 import com.excode.marketplace.ui.market.product.cart.CartActivity
 import com.excode.marketplace.utils.EXTRA_PRODUCT
-import com.excode.marketplace.utils.toast
+import com.excode.marketplace.utils.Resource
 import com.excode.marketplace.utils.withCurrencyFormat
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @Suppress("DEPRECATION")
 @AndroidEntryPoint
@@ -67,26 +69,9 @@ class DetailProductActivity : AppCompatActivity() {
                     )
                     false
                 }
-
-                binding.btnWishlist.setOnClickListener {
-                    toast(isWishlist.toString())
-                    isWishlist = if (isWishlist) {
-                        binding.btnWishlist.setCompoundDrawablesRelativeWithIntrinsicBounds(
-                            R.drawable.ic_wishlist_white, 0, 0, 0
-                        )
-                        viewModel.deleteWishlist(token, wishlistId).observe(this) {}
-                        false
-                    } else {
-                        binding.btnWishlist.setCompoundDrawablesRelativeWithIntrinsicBounds(
-                            R.drawable.ic_wishlist_white_fill, 0, 0, 0
-                        )
-                        true
-                    }
-                }
             }
 
             binding.btnWishlist.setOnClickListener {
-                toast(isWishlist.toString())
                 isWishlist = if (isWishlist) {
                     binding.btnWishlist.setCompoundDrawablesRelativeWithIntrinsicBounds(
                         R.drawable.ic_wishlist_white, 0, 0, 0
@@ -97,7 +82,17 @@ class DetailProductActivity : AppCompatActivity() {
                     binding.btnWishlist.setCompoundDrawablesRelativeWithIntrinsicBounds(
                         R.drawable.ic_wishlist_white_fill, 0, 0, 0
                     )
-                    viewModel.addWishlist(token, itemId).observe(this) {}
+                    viewModel.addWishlist(token, itemId).observe(this) { result ->
+                        when (result) {
+                            is Resource.Loading -> {}
+                            is Resource.Success -> {
+                                lifecycleScope.launch {
+                                    wishlistId = result.data?.data?.wishlist?.id!!
+                                }
+                            }
+                            is Resource.Error -> {}
+                        }
+                    }
                     true
                 }
             }
@@ -109,27 +104,4 @@ class DetailProductActivity : AppCompatActivity() {
             startActivity(Intent(this, CartActivity::class.java))
         }
     }
-
-
-//    private fun setWishlist(token: String, itemId: Int) {
-//        binding.btnWishlist.setOnClickListener {
-//            viewModel.getWishlist(token).observe(this) {result->
-//                val data = result.data?.data
-//                val wishlists = data?.wishlist
-//                if (isWishlist) {
-//                binding.btnWishlist.setCompoundDrawablesRelativeWithIntrinsicBounds(
-//                    R.drawable.ic_wishlist_white, 0, 0, 0
-//                )
-//                viewModel.deleteWishlist(token, wishlist.id).observe(this) {}
-//                isWishlist = false
-//            } else {
-//                binding.btnWishlist.setCompoundDrawablesRelativeWithIntrinsicBounds(
-//                    R.drawable.ic_wishlist_white_fill, 0, 0, 0
-//                )
-//                viewModel.addWishlist(token, itemId).observe(this) {}
-//                isWishlist = true
-//            }
-//            }
-//        }
-//    }
 }
