@@ -12,6 +12,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.excode.marketplace.data.remote.response.model.Wishlist
 import com.excode.marketplace.databinding.ItemWishlistBinding
 import com.excode.marketplace.ui.market.product.wishlist.WishlistViewModel
+import com.excode.marketplace.utils.Resource
 import com.excode.marketplace.utils.withCurrencyFormat
 
 class WishlistAdapter(
@@ -44,7 +45,19 @@ class WishlistAdapter(
                 tvProductPrice.text = data.item.price.withCurrencyFormat()
                 viewModel.token.observe(lifecycleOwner) { token ->
                     ivWishlist.setOnClickListener {
-                        viewModel.deleteWishlist(token, data.id).observe(lifecycleOwner) {}
+                        viewModel.deleteWishlist(token, data.id).observe(lifecycleOwner) {
+                            viewModel.getWishlist(token).observe(lifecycleOwner) { result ->
+                                when (result) {
+                                    is Resource.Success -> {
+                                        val item = result.data
+                                        if (item != null) {
+                                            submitList(item.data.wishlist)
+                                        }
+                                    }
+                                    else -> {}
+                                }
+                            }
+                        }
                     }
                 }
             }

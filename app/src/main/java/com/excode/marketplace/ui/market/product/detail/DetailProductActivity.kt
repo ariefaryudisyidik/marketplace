@@ -44,7 +44,6 @@ class DetailProductActivity : AppCompatActivity() {
                 tvProductDesc.text = item.description
                 viewModel.token.observe(this@DetailProductActivity) { token ->
                     wishlistStatus(token, item.id)
-//                    setWishlist(token, item.id)
                 }
             }
         }
