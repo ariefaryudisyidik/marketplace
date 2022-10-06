@@ -49,11 +49,12 @@ interface MarketApi {
         @Header("Authorization") token: String
     ): WishlistResponse
 
-    @POST("wishlists/{id}")
+    @FormUrlEncoded
+    @POST("wishlists")
     suspend fun addWishlist(
         @Header("Authorization") token: String,
-        @Path("id") id: Int
-    ): WishlistResponse
+        @Field("item_id") id: Int
+    ): WishlistPostResponse
 
     @DELETE("wishlists/{id}")
     suspend fun deleteWishlist(

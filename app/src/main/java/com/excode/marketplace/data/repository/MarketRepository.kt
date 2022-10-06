@@ -7,6 +7,7 @@ import com.excode.marketplace.R
 import com.excode.marketplace.data.remote.MarketApi
 import com.excode.marketplace.data.remote.response.CartResponse
 import com.excode.marketplace.data.remote.response.MarketResponse
+import com.excode.marketplace.data.remote.response.WishlistPostResponse
 import com.excode.marketplace.data.remote.response.WishlistResponse
 import com.excode.marketplace.utils.Resource
 import com.excode.marketplace.utils.getMessage
@@ -59,7 +60,7 @@ class MarketRepository @Inject constructor(
         }
     }
 
-    fun addWishlist(token: String, id: Int): LiveData<Resource<WishlistResponse>> = liveData {
+    fun addWishlist(token: String, id: Int): LiveData<Resource<WishlistPostResponse>> = liveData {
         try {
             emit(Resource.Loading())
             val data = api.addWishlist(token, id)
