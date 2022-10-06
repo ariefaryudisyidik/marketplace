@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.excode.marketplace.R
 import com.excode.marketplace.data.remote.response.model.Cart
 import com.excode.marketplace.databinding.ItemCartBinding
 import com.excode.marketplace.ui.market.product.cart.CartViewModel
@@ -38,7 +38,8 @@ class CartListAdapter(
                 Glide.with(context)
                     .load(data.item.picture1)
                     .centerCrop()
-                    .transition(DrawableTransitionOptions.withCrossFade()).into(ivProduct)
+                    .placeholder(R.drawable.ic_image)
+                    .into(ivProduct)
                 tvProductName.text = data.item.name
                 tvProductPrice.text = data.item.price.withCurrencyFormat()
 

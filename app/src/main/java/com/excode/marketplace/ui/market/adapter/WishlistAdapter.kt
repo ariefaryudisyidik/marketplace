@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.excode.marketplace.R
 import com.excode.marketplace.data.remote.response.model.Wishlist
 import com.excode.marketplace.databinding.ItemWishlistBinding
 import com.excode.marketplace.ui.market.product.wishlist.WishlistViewModel
@@ -40,7 +41,8 @@ class WishlistAdapter(
                 Glide.with(context)
                     .load(data.item.picture1)
                     .centerCrop()
-                    .transition(DrawableTransitionOptions.withCrossFade()).into(ivProduct)
+                    .placeholder(R.drawable.ic_image)
+                    .into(ivProduct)
                 tvProductName.text = data.item.name
                 tvProductPrice.text = data.item.price.withCurrencyFormat()
                 viewModel.token.observe(lifecycleOwner) { token ->
