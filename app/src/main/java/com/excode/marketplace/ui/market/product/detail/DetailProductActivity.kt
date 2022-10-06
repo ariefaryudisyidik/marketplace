@@ -10,6 +10,7 @@ import com.excode.marketplace.data.remote.response.data.MarketData
 import com.excode.marketplace.databinding.ActivityDetailProductBinding
 import com.excode.marketplace.ui.market.product.cart.CartActivity
 import com.excode.marketplace.utils.EXTRA_PRODUCT
+import com.excode.marketplace.utils.toast
 import com.excode.marketplace.utils.withCurrencyFormat
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -72,13 +73,13 @@ class DetailProductActivity : AppCompatActivity() {
                         R.drawable.ic_wishlist_white, 0, 0, 0
                     )
                     false
-            //                    viewModel.deleteWishlist(token, itemId).observe(this) {}
+                    //                    viewModel.deleteWishlist(token, itemId).observe(this) {}
                 } else {
                     binding.btnWishlist.setCompoundDrawablesRelativeWithIntrinsicBounds(
                         R.drawable.ic_wishlist_white_fill, 0, 0, 0
                     )
+//                    viewModel.addWishlist(token, itemId).observe(this) {}
                     true
-            //                    viewModel.addWishlist(token, itemId).observe(this) {}
                 }
             }
         }
