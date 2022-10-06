@@ -27,14 +27,45 @@ class DetailProductActivity : AppCompatActivity() {
         binding = ActivityDetailProductBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        getToken()
         showDetail()
         addToCart()
-        toast("onCreate")
     }
 
-    override fun onResume() {
-        super.onResume()
-        toast("onResume")
+    private fun getToken() {
+        viewModel.token.observe(this) { token ->
+            wishlistStatus(token)
+        }
+    }
+
+    private fun showDetail() {
+        binding.apply {
+            val data = intent.getParcelableExtra<MarketData>(EXTRA_PRODUCT) as MarketData
+            data.items.map { item ->
+                Glide.with(this@DetailProductActivity)
+                    .load(item.picture1)
+                    .into(ivProduct)
+                tvProductName.text = item.name
+                tvProductPrice.text = item.price.withCurrencyFormat()
+                tvProductDesc.text = item.description
+            }
+        }
+    }
+
+    private fun wishlistStatus(token: String) {
+        viewModel.getWishlist(token).observe(this) { result ->
+            val data = result.data?.data
+            val wishlists = data?.wishlist
+            if (wishlists.isNullOrEmpty()) {
+                binding.btnWishlist.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                    R.drawable.ic_wishlist_white, 0, 0, 0
+                )
+            } else {
+                binding.btnWishlist.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                    R.drawable.ic_wishlist_white_fill, 0, 0, 0
+                )
+            }
+        }
     }
 
     private fun addToCart() {
@@ -66,23 +97,6 @@ class DetailProductActivity : AppCompatActivity() {
                     )
                     viewModel.deleteWishlist(token, wishlistId).observe(this) {}
                     toast(wishlistId.toString())
-                }
-            }
-        }
-    }
-
-    private fun showDetail() {
-        binding.apply {
-            val data = intent.getParcelableExtra<MarketData>(EXTRA_PRODUCT) as MarketData
-            data.items.map { item ->
-                Glide.with(this@DetailProductActivity)
-                    .load(item.picture1)
-                    .into(ivProduct)
-                tvProductName.text = item.name
-                tvProductPrice.text = item.price.withCurrencyFormat()
-                tvProductDesc.text = item.description
-                viewModel.token.observe(this@DetailProductActivity) { token ->
-                    setWishlist(token, item.id)
                 }
             }
         }
