@@ -47,7 +47,7 @@
             android:textColor="?android:attr/textColorPrimary"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/tv_product_price"
-            app:layout_constraintEnd_toStartOf="@+id/check_box"
+            app:layout_constraintEnd_toStartOf="@+id/radio_button"
             app:layout_constraintStart_toEndOf="@+id/iv_product"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -69,8 +69,8 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="38dp" />
 
-        <CheckBox
-            android:id="@+id/check_box"
+        <RadioButton
+            android:id="@+id/radio_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"

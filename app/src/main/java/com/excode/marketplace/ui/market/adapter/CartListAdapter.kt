@@ -46,8 +46,8 @@ class CartListAdapter(
                 var count = 1
                 val price = data.item.price.toInt()
 
-                checkBox.setOnClickListener {
-                    if (checkBox.isChecked) {
+                radioButton.setOnClickListener {
+                    if (radioButton.isChecked) {
                         viewModel.incrementCount(count * price)
                     } else {
                         viewModel.decrementCount(count * price)
@@ -60,7 +60,7 @@ class CartListAdapter(
                 btnPlus.setOnClickListener {
                     count++
                     tvProductCount.text = count.toString()
-                    if (checkBox.isChecked) {
+                    if (radioButton.isChecked) {
                         viewModel.incrementCount(price)
                         viewModel.counter.observe(lifecycleOwner) {
                             viewModel.getPrice(it)
@@ -72,7 +72,7 @@ class CartListAdapter(
                     if (count > 1) {
                         count--
                         tvProductCount.text = count.toString()
-                        if (checkBox.isChecked) {
+                        if (radioButton.isChecked) {
                             viewModel.decrementCount(price)
                             viewModel.counter.observe(lifecycleOwner) {
                                 viewModel.getPrice(it)
