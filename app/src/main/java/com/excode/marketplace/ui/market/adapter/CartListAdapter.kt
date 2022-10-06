@@ -1,9 +1,11 @@
 package com.excode.marketplace.ui.market.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -13,6 +15,8 @@ import com.excode.marketplace.data.remote.response.model.Cart
 import com.excode.marketplace.databinding.ItemCartBinding
 import com.excode.marketplace.ui.market.product.cart.CartViewModel
 import com.excode.marketplace.utils.withCurrencyFormat
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class CartListAdapter(
     private val context: Context,
@@ -31,8 +35,11 @@ class CartListAdapter(
         holder.bind(cart)
     }
 
+    var selectedPosition = -1
+
     inner class ViewHolder(private val binding: ItemCartBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("NotifyDataSetChanged")
         fun bind(data: Cart) {
             binding.apply {
                 Glide.with(context)
@@ -43,10 +50,18 @@ class CartListAdapter(
                 tvProductName.text = data.item.name
                 tvProductPrice.text = data.item.price.withCurrencyFormat()
 
-                var count = 1
+                var count = tvProductCount.text.toString().toInt()
                 val price = data.item.price.toInt()
 
-                radioButton.setOnClickListener {
+                radioButton.isChecked = (adapterPosition == selectedPosition)
+                radioButton.setOnCheckedChangeListener { _, b ->
+                    if (b) {
+                        selectedPosition = adapterPosition
+                    }
+                    lifecycleOwner.lifecycleScope.launch {
+                        delay(1)
+                        notifyDataSetChanged()
+                    }
                     if (radioButton.isChecked) {
                         viewModel.incrementCount(count * price)
                     } else {
@@ -67,7 +82,6 @@ class CartListAdapter(
                         }
                     }
                 }
-
                 btnMinus.setOnClickListener {
                     if (count > 1) {
                         count--
