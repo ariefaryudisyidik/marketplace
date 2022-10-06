@@ -27,15 +27,8 @@ class DetailProductActivity : AppCompatActivity() {
         binding = ActivityDetailProductBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        getToken()
         showDetail()
         addToCart()
-    }
-
-    private fun getToken() {
-        viewModel.token.observe(this) { token ->
-            wishlistStatus(token)
-        }
     }
 
     private fun showDetail() {
@@ -48,22 +41,27 @@ class DetailProductActivity : AppCompatActivity() {
                 tvProductName.text = item.name
                 tvProductPrice.text = item.price.withCurrencyFormat()
                 tvProductDesc.text = item.description
+                viewModel.token.observe(this@DetailProductActivity) { token ->
+                    wishlistStatus(token, item.id)
+                }
             }
         }
     }
 
-    private fun wishlistStatus(token: String) {
+    private fun wishlistStatus(token: String, itemId: Int) {
         viewModel.getWishlist(token).observe(this) { result ->
             val data = result.data?.data
             val wishlists = data?.wishlist
-            if (wishlists.isNullOrEmpty()) {
-                binding.btnWishlist.setCompoundDrawablesRelativeWithIntrinsicBounds(
-                    R.drawable.ic_wishlist_white, 0, 0, 0
-                )
-            } else {
-                binding.btnWishlist.setCompoundDrawablesRelativeWithIntrinsicBounds(
-                    R.drawable.ic_wishlist_white_fill, 0, 0, 0
-                )
+            wishlists?.map {
+                if (wishlists.isNotEmpty() && it.itemId.toInt() == itemId) {
+                    binding.btnWishlist.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                        R.drawable.ic_wishlist_white_fill, 0, 0, 0
+                    )
+                } else {
+                    binding.btnWishlist.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                        R.drawable.ic_wishlist_white, 0, 0, 0
+                    )
+                }
             }
         }
     }
