@@ -17,6 +17,7 @@ import com.excode.marketplace.utils.showProgress
 import com.excode.marketplace.utils.toast
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
@@ -39,6 +40,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun searchProduct() {
         binding.searchView.setOnClickListener {
+            requireActivity().startActivity(Intent(requireActivity(), SearchActivity::class.java))
+        }
+        binding.searchView.setOnSearchClickListener {
+            binding.searchView.isIconified = true
             requireActivity().startActivity(Intent(requireActivity(), SearchActivity::class.java))
         }
     }
