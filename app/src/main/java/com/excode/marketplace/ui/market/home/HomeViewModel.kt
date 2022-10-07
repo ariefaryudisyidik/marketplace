@@ -12,7 +12,7 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val marketRepository: MarketRepository,
     private val authRepository: AuthRepository,
-    private val pref: UserPreference
+    pref: UserPreference
 ) : ViewModel() {
 
     val token = pref.getToken.asLiveData()

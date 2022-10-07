@@ -3,7 +3,6 @@ package com.excode.marketplace.di
 import androidx.viewbinding.BuildConfig
 import com.excode.marketplace.data.remote.MarketApi
 import com.excode.marketplace.utils.BASE_URL
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides

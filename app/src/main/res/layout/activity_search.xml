@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="?colorOnPrimary"
     android:contentDescription="@string/container"
-    tools:context=".ui.market.home.HomeFragment">
+    tools:context=".ui.market.product.search.SearchActivity">
 
     <View
         android:id="@+id/view2"
@@ -17,32 +17,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_username"
-        style="@style/Text.Bold"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/primary_dark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_wishlist"
-        tools:text="@string/user_welcome" />
-
     <SearchView
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="64dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/bg_round"
-        android:clickable="false"
-        android:focusable="false"
         android:queryBackground="@android:color/transparent"
         android:searchIcon="@drawable/ic_search"
         android:theme="@style/SearchView"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_username" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_product"
@@ -56,27 +44,4 @@
         app:spanCount="2"
         tools:listitem="@layout/item_product" />
 
-    <ImageView
-        android:id="@+id/iv_cart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:contentDescription="@string/content_desc"
-        android:src="@drawable/ic_shopping_cart"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/primary_dark" />
-
-    <ImageView
-        android:id="@+id/iv_wishlist"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:contentDescription="@string/content_desc"
-        android:src="@drawable/ic_wishlist"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_cart"
-        app:layout_constraintEnd_toStartOf="@+id/iv_cart"
-        app:layout_constraintTop_toTopOf="@+id/iv_cart"
-        app:tint="@color/primary_dark" />
 </androidx.constraintlayout.widget.ConstraintLayout>
