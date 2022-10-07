@@ -63,12 +63,17 @@ class CartListAdapter(
                         notifyDataSetChanged()
                     }
                     if (radioButton.isChecked) {
-                        viewModel.incrementCount(count * price)
+                        val item = data.item
+                        viewModel.apply {
+                            incrementCount(count * price)
+                            getProduct(item)
+                            getProductCount(count)
+                        }
                     } else {
                         viewModel.decrementCount(count * price)
                     }
-                    viewModel.counter.observe(lifecycleOwner) {
-                        viewModel.getPrice(it)
+                    viewModel.counter.observe(lifecycleOwner) { price ->
+                        viewModel.getPrice(price)
                     }
                 }
 
@@ -76,9 +81,12 @@ class CartListAdapter(
                     count++
                     tvProductCount.text = count.toString()
                     if (radioButton.isChecked) {
-                        viewModel.incrementCount(price)
-                        viewModel.counter.observe(lifecycleOwner) {
-                            viewModel.getPrice(it)
+                        viewModel.apply {
+                            incrementCount(price)
+                            getProductCount(count)
+                            counter.observe(lifecycleOwner) { price ->
+                                getPrice(price)
+                            }
                         }
                     }
                 }
@@ -87,9 +95,12 @@ class CartListAdapter(
                         count--
                         tvProductCount.text = count.toString()
                         if (radioButton.isChecked) {
-                            viewModel.decrementCount(price)
-                            viewModel.counter.observe(lifecycleOwner) {
-                                viewModel.getPrice(it)
+                            viewModel.apply {
+                                decrementCount(price)
+                                getProductCount(count)
+                                counter.observe(lifecycleOwner) { price ->
+                                    getPrice(price)
+                                }
                             }
                         }
                     }

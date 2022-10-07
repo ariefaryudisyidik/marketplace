@@ -30,11 +30,17 @@ class CartActivity : AppCompatActivity() {
 
     private fun buy() {
         binding.apply {
-            btnBuy.setOnClickListener {
-                val totalPrice = tvTotal.text.toString()
-                val intent = Intent(this@CartActivity, BuyActivity::class.java)
-                intent.putExtra(EXTRA_CART, totalPrice)
-                startActivity(intent)
+            viewModel.product.observe(this@CartActivity) { product ->
+                viewModel.productCount.observe(this@CartActivity) { count ->
+                    btnBuy.setOnClickListener {
+                        val totalPrice = tvTotal.text.toString()
+                        val intent = Intent(this@CartActivity, BuyActivity::class.java)
+                        intent.putExtra(EXTRA_PRODUCT, product)
+                        intent.putExtra(EXTRA_PRODUCT_COUNT, count)
+                        intent.putExtra(EXTRA_TOTAL_PRICE, totalPrice)
+                        startActivity(intent)
+                    }
+                }
             }
         }
     }

@@ -61,4 +61,7 @@
     <string name="bank_transfer">Transfer Bank</string>
     <string name="payment">Pembayaran</string>
     <string name="total_payment">Total Pembayaran</string>
+    <string name="account_number">00091–0161–004320–9 (Anissa Rizki Mulia)</string>
+    <string name="dummy_initial_numberx">1x</string>
+    <string name="product_count">%sx</string>
 </resources>
