@@ -1,17 +1,20 @@
 package com.excode.marketplace.ui.market.product.buy
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.excode.marketplace.R
 import com.excode.marketplace.data.remote.response.model.Item
 import com.excode.marketplace.databinding.ActivityBuyBinding
+import com.excode.marketplace.ui.market.product.shopping.ShoppingActivity
 import com.excode.marketplace.utils.EXTRA_PRODUCT
 import com.excode.marketplace.utils.EXTRA_PRODUCT_COUNT
 import com.excode.marketplace.utils.EXTRA_TOTAL_PRICE
 import com.excode.marketplace.utils.withCurrencyFormat
 import dagger.hilt.android.AndroidEntryPoint
 
+@Suppress("DEPRECATION")
 @AndroidEntryPoint
 class BuyActivity : AppCompatActivity() {
 
@@ -23,6 +26,7 @@ class BuyActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         getCartData()
+        order()
     }
 
     private fun getCartData() {
@@ -40,6 +44,13 @@ class BuyActivity : AppCompatActivity() {
             tvProductPrice.text = product.price.withCurrencyFormat()
             tvProductCount.text = getString(R.string.product_count, productCount.toString())
             tvTotalPrice.text = totalPrice
+        }
+    }
+
+    private fun order() {
+        binding.btnOrder.setOnClickListener {
+            val intent = Intent(this, ShoppingActivity::class.java)
+            startActivity(intent)
         }
     }
 

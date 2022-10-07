@@ -78,6 +78,12 @@ class CartActivity : AppCompatActivity() {
                             btnBuy.isVisible = true
                             layoutEmpty.root.isVisible = false
                         }
+                        if (data.data.cart.isEmpty()) {
+                            binding.apply {
+                                btnBuy.isVisible = false
+                                layoutEmpty.root.isVisible = true
+                            }
+                        }
                     }
                 }
                 is Resource.Error -> {

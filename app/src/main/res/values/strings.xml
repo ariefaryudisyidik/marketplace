@@ -64,4 +64,5 @@
     <string name="account_number">00091–0161–004320–9 (Anissa Rizki Mulia)</string>
     <string name="dummy_initial_numberx">1x</string>
     <string name="product_count">%sx</string>
+    <string name="processed">Diproses</string>
 </resources>
