@@ -3,6 +3,7 @@ package com.excode.marketplace.ui.market.home
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.excode.marketplace.R
@@ -71,10 +72,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     val data = result.data
                     if (data != null) {
                         adapter.submitList(data.data)
+                        binding.layoutEmpty.root.isVisible = false
                     }
                 }
                 is Resource.Error -> {
                     showLoading(false)
+                    binding.layoutEmpty.root.isVisible = true
                     if (token.isNotEmpty()) {
                         showMessage(result.message)
                     }

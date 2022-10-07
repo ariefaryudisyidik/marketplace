@@ -52,13 +52,17 @@ class WishlistActivity : AppCompatActivity() {
                     if (data != null) {
                         adapter.submitList(data.data.wishlist)
                         binding.layoutEmpty.root.isVisible = false
-
+                        if (data.data.wishlist.isEmpty()) {
+                            binding.apply {
+                                layoutEmpty.root.isVisible = true
+                            }
+                        }
                     }
+
                 }
                 is Resource.Error -> {
                     showLoading(false)
                     binding.layoutEmpty.root.isVisible = true
-
                     if (token.isNotEmpty()) {
                         showMessage(result.message)
                     }

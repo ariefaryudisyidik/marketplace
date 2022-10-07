@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.SearchView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.excode.marketplace.data.remote.response.model.Item
 import com.excode.marketplace.databinding.ActivitySearchBinding
 import com.excode.marketplace.ui.market.adapter.ProductGridAdapter
@@ -76,10 +77,12 @@ class SearchActivity : AppCompatActivity() {
                     if (data != null) {
                         adapter.submitList(data)
                     }
+                    binding.layoutEmpty.root.isVisible = false
                 }
                 is Resource.Error -> {
                     showLoading(false)
                     showMessage(result.message)
+                    binding.layoutEmpty.root.isVisible = true
                 }
             }
         }
