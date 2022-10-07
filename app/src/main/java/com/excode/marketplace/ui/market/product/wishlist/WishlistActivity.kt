@@ -19,7 +19,6 @@ class WishlistActivity : AppCompatActivity() {
     private val viewModel: WishlistViewModel by viewModels()
     private lateinit var adapter: WishlistAdapter
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityWishlistBinding.inflate(layoutInflater)

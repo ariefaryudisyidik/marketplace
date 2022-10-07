@@ -51,7 +51,6 @@ class DetailProductActivity : AppCompatActivity() {
 
     private fun wishlistStatus(token: String, itemId: Int) {
         viewModel.getWishlist(token).observe(this) { result ->
-            window.setBackgroundDrawableResource(android.R.color.transparent)
             when (result) {
                 is Resource.Success -> {
                     binding.apply {
@@ -65,7 +64,11 @@ class DetailProductActivity : AppCompatActivity() {
                     var wishlistId = 0
                     wishlists?.map { wishlist ->
                         wishlistId = wishlist.id
-                        isWishlist = if (wishlist.itemId.toInt() == itemId) {
+
+                        toast("wishlist: ${wishlist.item.id}")
+                        toast("item: $itemId")
+
+                        isWishlist = if (wishlist.item.id == itemId) {
                             binding.btnWishlist.setCompoundDrawablesRelativeWithIntrinsicBounds(
                                 R.drawable.ic_wishlist_white_fill, 0, 0, 0
                             )
