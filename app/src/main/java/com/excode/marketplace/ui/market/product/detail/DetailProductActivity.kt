@@ -64,11 +64,7 @@ class DetailProductActivity : AppCompatActivity() {
                     var wishlistId = 0
                     wishlists?.map { wishlist ->
                         wishlistId = wishlist.id
-
-                        toast("wishlist: ${wishlist.item.id}")
-                        toast("item: $itemId")
-
-                        isWishlist = if (wishlist.item.id == itemId) {
+                        isWishlist = if (wishlists.any { it.itemId.toInt() == itemId }) {
                             binding.btnWishlist.setCompoundDrawablesRelativeWithIntrinsicBounds(
                                 R.drawable.ic_wishlist_white_fill, 0, 0, 0
                             )
