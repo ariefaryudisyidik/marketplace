@@ -1,6 +1,5 @@
 package com.excode.marketplace.ui.market.product.detail
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.excode.marketplace.data.local.datastore.UserPreference
@@ -18,4 +17,6 @@ class DetailProductViewModel @Inject constructor(
     fun getWishlist(token: String) = repository.getWishlist(token)
     fun addWishlist(token: String, id: Int) = repository.addWishlist(token, id)
     fun deleteWishlist(token: String, id: Int) = repository.deleteWishlist(token, id)
+
+    fun addCart(token: String, id: Int) = repository.addCart(token, id)
 }

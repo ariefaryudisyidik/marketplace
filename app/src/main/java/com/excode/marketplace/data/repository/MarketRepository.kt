@@ -5,10 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.excode.marketplace.R
 import com.excode.marketplace.data.remote.MarketApi
-import com.excode.marketplace.data.remote.response.CartResponse
-import com.excode.marketplace.data.remote.response.MarketResponse
-import com.excode.marketplace.data.remote.response.WishlistPostResponse
-import com.excode.marketplace.data.remote.response.WishlistResponse
+import com.excode.marketplace.data.remote.response.*
 import com.excode.marketplace.utils.Resource
 import com.excode.marketplace.utils.getMessage
 import com.excode.marketplace.utils.getString
@@ -51,6 +48,19 @@ class MarketRepository @Inject constructor(
         try {
             emit(Resource.Loading())
             val data = api.getWishlist(token)
+            emit(Resource.Success(data))
+        } catch (e: HttpException) {
+            val message = getMessage(e)
+            emit(Resource.Error(message))
+        } catch (e: IOException) {
+            emit(Resource.Error(getString(context, R.string.error_connection)))
+        }
+    }
+
+    fun addCart(token: String, id: Int): LiveData<Resource<CartPostResponse>> = liveData {
+        try {
+            emit(Resource.Loading())
+            val data = api.addCart(token, id)
             emit(Resource.Success(data))
         } catch (e: HttpException) {
             val message = getMessage(e)

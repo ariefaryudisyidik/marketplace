@@ -44,6 +44,13 @@ interface MarketApi {
         @Header("Authorization") token: String
     ): CartResponse
 
+    @FormUrlEncoded
+    @POST("carts")
+    suspend fun addCart(
+        @Header("Authorization") token: String,
+        @Field("item_id") id: Int
+    ): CartPostResponse
+
     @GET("wishlists")
     suspend fun getWishlist(
         @Header("Authorization") token: String

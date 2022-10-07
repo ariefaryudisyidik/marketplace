@@ -1,7 +1,6 @@
 package com.excode.marketplace.data.remote.response.model
 
 
-import com.excode.marketplace.data.remote.response.model.Item
 import com.google.gson.annotations.SerializedName
 
 data class Cart(

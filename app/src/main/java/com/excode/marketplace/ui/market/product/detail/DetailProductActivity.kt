@@ -13,6 +13,7 @@ import com.excode.marketplace.databinding.ActivityDetailProductBinding
 import com.excode.marketplace.ui.market.product.cart.CartActivity
 import com.excode.marketplace.utils.EXTRA_PRODUCT
 import com.excode.marketplace.utils.Resource
+import com.excode.marketplace.utils.toast
 import com.excode.marketplace.utils.withCurrencyFormat
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -30,7 +31,6 @@ class DetailProductActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         showDetail()
-        addToCart()
     }
 
     private fun showDetail() {
@@ -44,6 +44,7 @@ class DetailProductActivity : AppCompatActivity() {
                 tvProductPrice.text = item.price.withCurrencyFormat()
                 tvProductDesc.text = item.description
                 viewModel.token.observe(this@DetailProductActivity) { token ->
+                    addToCart(token, item.id)
                     wishlistStatus(token, item.id)
                 }
             }
@@ -92,13 +93,12 @@ class DetailProductActivity : AppCompatActivity() {
                             )
                             viewModel.addWishlist(token, itemId).observe(this) { result ->
                                 when (result) {
-                                    is Resource.Loading -> {}
                                     is Resource.Success -> {
                                         lifecycleScope.launch {
                                             wishlistId = result.data?.data?.wishlist?.id!!
                                         }
                                     }
-                                    is Resource.Error -> {}
+                                    else -> {}
                                 }
                             }
                             true
@@ -110,9 +110,23 @@ class DetailProductActivity : AppCompatActivity() {
         }
     }
 
-    private fun addToCart() {
+    private fun addToCart(token: String, itemId: Int) {
         binding.btnCart.setOnClickListener {
-            startActivity(Intent(this, CartActivity::class.java))
+            viewModel.addCart(token, itemId).observe(this) { result ->
+                when (result) {
+                    is Resource.Loading -> {}
+                    is Resource.Success -> {
+                        startActivity(Intent(this, CartActivity::class.java))
+                    }
+                    is Resource.Error -> {
+                        startActivity(Intent(this, CartActivity::class.java))
+                    }
+                }
+            }
         }
+    }
+
+    private fun showMessage(message: String?) {
+        toast(message)
     }
 }
