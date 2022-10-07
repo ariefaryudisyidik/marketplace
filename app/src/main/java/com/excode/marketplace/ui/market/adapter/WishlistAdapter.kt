@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.excode.marketplace.R
 import com.excode.marketplace.data.remote.response.model.Wishlist
 import com.excode.marketplace.databinding.ItemWishlistBinding
@@ -36,18 +35,18 @@ class WishlistAdapter(
 
     inner class ViewHolder(private val binding: ItemWishlistBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: Wishlist) {
+        fun bind(wishlist: Wishlist) {
             binding.apply {
                 Glide.with(context)
-                    .load(data.item.picture1)
+                    .load(wishlist.item.picture1)
                     .centerCrop()
                     .placeholder(R.drawable.ic_image)
                     .into(ivProduct)
-                tvProductName.text = data.item.name
-                tvProductPrice.text = data.item.price.withCurrencyFormat()
+                tvProductName.text = wishlist.item.name
+                tvProductPrice.text = wishlist.item.price.withCurrencyFormat()
                 viewModel.token.observe(lifecycleOwner) { token ->
                     ivWishlist.setOnClickListener {
-                        viewModel.deleteWishlist(token, data.id).observe(lifecycleOwner) {
+                        viewModel.deleteWishlist(token, wishlist.id).observe(lifecycleOwner) {
                             viewModel.getWishlist(token).observe(lifecycleOwner) { result ->
                                 when (result) {
                                     is Resource.Success -> {

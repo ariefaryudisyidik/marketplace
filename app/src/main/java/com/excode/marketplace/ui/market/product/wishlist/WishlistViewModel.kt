@@ -17,7 +17,5 @@ class WishlistViewModel @Inject constructor(
 
     fun getWishlist(token: String) = repository.getWishlist(token)
 
-    fun addWishList(token: String, id: Int) = repository.addWishlist(token, id)
-
     fun deleteWishlist(token: String, id: Int) = repository.deleteWishlist(token, id)
 }

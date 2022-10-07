@@ -5,6 +5,8 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.excode.marketplace.databinding.ActivityCartBinding
 import com.excode.marketplace.ui.market.adapter.CartListAdapter
 import com.excode.marketplace.ui.market.product.buy.BuyActivity
@@ -84,6 +86,10 @@ class CartActivity : AppCompatActivity() {
                                 layoutEmpty.root.isVisible = true
                             }
                         }
+                        val listCart = data.data.cart
+                        listCart.map { cart ->
+                            deleteCart(token, cart.id)
+                        }
                     }
                 }
                 is Resource.Error -> {
@@ -95,6 +101,48 @@ class CartActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun deleteCart(token: String, cartId: Int) {
+        ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                viewModel.deleteCart(token, cartId).observe(this@CartActivity) { result ->
+                    when (result) {
+                        is Resource.Loading -> {}
+                        is Resource.Success -> {
+                            val data = result.data
+                            if (data != null) {
+                                viewModel.getCarts(token).observe(this@CartActivity) { cart ->
+                                    when (cart) {
+                                        is Resource.Loading -> {}
+                                        is Resource.Success -> {
+                                            val cartData = cart.data
+                                            if (cartData != null) {
+                                                val listCart = cartData.data.cart as ArrayList
+//                                                listCart.removeAt()
+//                                                adapter.submitList(listCart)
+                                            }
+                                        }
+                                        is Resource.Error -> {}
+                                    }
+                                }
+                            }
+                        }
+                        is Resource.Error -> {}
+                    }
+                }
+                adapter.notifyItemRemoved(viewHolder.adapterPosition)
+            }
+
+        }).attachToRecyclerView(binding.rvCart)
     }
 
     private fun showLoading(state: Boolean) {

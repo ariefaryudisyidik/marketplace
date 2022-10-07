@@ -63,6 +63,12 @@ interface MarketApi {
         @Field("item_id") id: Int
     ): WishlistPostResponse
 
+    @DELETE("carts/{id}")
+    suspend fun deleteCart(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int
+    ): CartPostResponse
+
     @DELETE("wishlists/{id}")
     suspend fun deleteWishlist(
         @Header("Authorization") token: String,

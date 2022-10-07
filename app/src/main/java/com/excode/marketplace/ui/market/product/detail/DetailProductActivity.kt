@@ -117,9 +117,11 @@ class DetailProductActivity : AppCompatActivity() {
                     is Resource.Loading -> {}
                     is Resource.Success -> {
                         startActivity(Intent(this, CartActivity::class.java))
+                        finish()
                     }
                     is Resource.Error -> {
                         startActivity(Intent(this, CartActivity::class.java))
+                        finish()
                     }
                 }
             }

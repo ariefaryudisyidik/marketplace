@@ -43,4 +43,6 @@ class CartViewModel @Inject constructor(
     fun getProduct(value: Item) {
         product.postValue(value)
     }
+
+    fun deleteCart(token: String, id: Int) = repository.deleteCart(token, id)
 }
