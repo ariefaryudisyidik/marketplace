@@ -8,7 +8,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.excode.marketplace.R
-import com.excode.marketplace.data.remote.response.data.MarketData
+import com.excode.marketplace.data.remote.response.model.Item
 import com.excode.marketplace.databinding.ActivityDetailProductBinding
 import com.excode.marketplace.ui.market.product.cart.CartActivity
 import com.excode.marketplace.utils.EXTRA_PRODUCT
@@ -35,18 +35,16 @@ class DetailProductActivity : AppCompatActivity() {
 
     private fun showDetail() {
         binding.apply {
-            val data = intent.getParcelableExtra<MarketData>(EXTRA_PRODUCT) as MarketData
-            data.items.map { item ->
-                Glide.with(this@DetailProductActivity)
-                    .load(item.picture1)
-                    .into(ivProduct)
-                tvProductName.text = item.name
-                tvProductPrice.text = item.price.withCurrencyFormat()
-                tvProductDesc.text = item.description
-                viewModel.token.observe(this@DetailProductActivity) { token ->
-                    addToCart(token, item.id)
-                    wishlistStatus(token, item.id)
-                }
+            val item = intent.getParcelableExtra<Item>(EXTRA_PRODUCT) as Item
+            Glide.with(this@DetailProductActivity)
+                .load(item.picture1)
+                .into(ivProduct)
+            tvProductName.text = item.name
+            tvProductPrice.text = item.price.withCurrencyFormat()
+            tvProductDesc.text = item.description
+            viewModel.token.observe(this@DetailProductActivity) { token ->
+                addToCart(token, item.id)
+                wishlistStatus(token, item.id)
             }
         }
     }

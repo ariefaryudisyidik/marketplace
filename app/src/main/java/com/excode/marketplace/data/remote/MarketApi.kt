@@ -34,7 +34,7 @@ interface MarketApi {
         @Header("Authorization") token: String,
     ): UserResponse
 
-    @GET("shops")
+    @GET("items")
     suspend fun getProducts(
         @Header("Authorization") token: String
     ): MarketResponse
