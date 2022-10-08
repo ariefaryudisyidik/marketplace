@@ -12,6 +12,7 @@ import com.excode.marketplace.R
 import com.excode.marketplace.data.remote.response.model.Item
 import com.excode.marketplace.databinding.ItemProductBinding
 import com.excode.marketplace.ui.market.product.detail.DetailProductActivity
+import com.excode.marketplace.utils.EXTRA_POSITION
 import com.excode.marketplace.utils.EXTRA_PRODUCT
 import com.excode.marketplace.utils.withCurrencyFormat
 
@@ -40,10 +41,10 @@ class ProductGridAdapter(private val context: Context) :
                 tvProductName.text = item.name
                 tvProductPrice.text = item.price.withCurrencyFormat()
 
-
                 root.setOnClickListener {
                     val intent = Intent(context, DetailProductActivity::class.java)
                     intent.putExtra(EXTRA_PRODUCT, item)
+                    intent.putExtra(EXTRA_POSITION, adapterPosition)
                     context.startActivity(intent)
                 }
             }
