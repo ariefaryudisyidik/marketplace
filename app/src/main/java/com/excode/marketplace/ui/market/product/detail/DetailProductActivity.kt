@@ -13,7 +13,6 @@ import com.excode.marketplace.databinding.ActivityDetailProductBinding
 import com.excode.marketplace.ui.market.product.cart.CartActivity
 import com.excode.marketplace.utils.EXTRA_PRODUCT
 import com.excode.marketplace.utils.Resource
-import com.excode.marketplace.utils.toast
 import com.excode.marketplace.utils.withCurrencyFormat
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -123,9 +122,5 @@ class DetailProductActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-
-    private fun showMessage(message: String?) {
-        toast(message)
     }
 }
