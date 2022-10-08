@@ -11,6 +11,7 @@ import com.excode.marketplace.R
 import com.excode.marketplace.data.remote.response.model.Item
 import com.excode.marketplace.databinding.ActivityDetailProductBinding
 import com.excode.marketplace.ui.market.product.cart.CartActivity
+import com.excode.marketplace.utils.EXTRA_POSITION
 import com.excode.marketplace.utils.EXTRA_PRODUCT
 import com.excode.marketplace.utils.Resource
 import com.excode.marketplace.utils.withCurrencyFormat
@@ -58,35 +59,40 @@ class DetailProductActivity : AppCompatActivity() {
                         layoutEmpty.root.isVisible = false
                     }
                     val data = result.data?.data
-                    val wishlists = data?.wishlist
+                    val wishlists = data?.wishlist?.sortedBy { it.itemId }
                     var isWishlist = false
                     var wishlistId = 0
-                    wishlists?.map { wishlist ->
-                        wishlistId = wishlist.id
-                        isWishlist = if (wishlists.any { it.itemId.toInt() == itemId }) {
-                            binding.btnWishlist.setCompoundDrawablesRelativeWithIntrinsicBounds(
-                                R.drawable.ic_wishlist_white_fill, 0, 0, 0
-                            )
+                    var wishlistItemId = 0
+
+                    val position = intent.getIntExtra(EXTRA_POSITION, 0)
+
+                    if (position < wishlists?.size!!) {
+                        wishlistId = wishlists[position].id
+                        wishlistItemId = wishlists[position].itemId.toInt()
+                    }
+//                    Log.i(TAG, it.itemId)
+//                    Log.i(TAG, "itemId: $itemId")
+                    wishlists.any {
+                        if (it.itemId.toInt() == itemId) {
+                            wishlistStatus(true)
+                            isWishlist = true
                             true
                         } else {
-                            binding.btnWishlist.setCompoundDrawablesRelativeWithIntrinsicBounds(
-                                R.drawable.ic_wishlist_white, 0, 0, 0
-                            )
+                            wishlistStatus(false)
+                            isWishlist = false
                             false
                         }
                     }
 
                     binding.btnWishlist.setOnClickListener {
                         isWishlist = if (isWishlist) {
-                            binding.btnWishlist.setCompoundDrawablesRelativeWithIntrinsicBounds(
-                                R.drawable.ic_wishlist_white, 0, 0, 0
-                            )
-                            viewModel.deleteWishlist(token, wishlistId).observe(this) {}
+                            wishlistStatus(false)
+                            if (itemId == wishlistItemId) {
+                                viewModel.deleteWishlist(token, wishlistId).observe(this) {}
+                            }
                             false
                         } else {
-                            binding.btnWishlist.setCompoundDrawablesRelativeWithIntrinsicBounds(
-                                R.drawable.ic_wishlist_white_fill, 0, 0, 0
-                            )
+                            wishlistStatus(true)
                             viewModel.addWishlist(token, itemId).observe(this) { result ->
                                 when (result) {
                                     is Resource.Success -> {
@@ -121,6 +127,18 @@ class DetailProductActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+    }
+
+    private fun wishlistStatus(isWishlist: Boolean) {
+        if (isWishlist) {
+            binding.btnWishlist.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                R.drawable.ic_wishlist_white_fill, 0, 0, 0
+            )
+        } else {
+            binding.btnWishlist.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                R.drawable.ic_wishlist_white, 0, 0, 0
+            )
         }
     }
 }
