@@ -70,8 +70,7 @@ class DetailProductActivity : AppCompatActivity() {
                         wishlistId = wishlists[position].id
                         wishlistItemId = wishlists[position].itemId.toInt()
                     }
-//                    Log.i(TAG, it.itemId)
-//                    Log.i(TAG, "itemId: $itemId")
+
                     wishlists.any {
                         if (it.itemId.toInt() == itemId) {
                             wishlistStatus(true)

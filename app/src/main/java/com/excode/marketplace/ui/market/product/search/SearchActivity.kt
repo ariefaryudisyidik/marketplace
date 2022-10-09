@@ -18,7 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class SearchActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySearchBinding
-    private val viewModel:SearchViewModel by viewModels()
+    private val viewModel: SearchViewModel by viewModels()
     private lateinit var adapter: ProductGridAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
