@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.excode.marketplace.data.remote.response.model.Cart
 import com.excode.marketplace.databinding.ActivityCartBinding
 import com.excode.marketplace.ui.market.adapter.CartListAdapter
 import com.excode.marketplace.ui.market.product.buy.BuyActivity
@@ -19,6 +20,7 @@ class CartActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCartBinding
     private val viewModel: CartViewModel by viewModels()
     private lateinit var adapter: CartListAdapter
+    private lateinit var cartList: List<Cart>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +63,7 @@ class CartActivity : AppCompatActivity() {
     private fun getToken() {
         viewModel.token.observe(this) { token ->
             getCarts(token)
+            deleteCart(token)
         }
     }
 
@@ -76,20 +79,20 @@ class CartActivity : AppCompatActivity() {
                     if (data != null) {
                         adapter.submitList(data.data.cart)
                         setTotalPrice()
-                        binding.apply {
-                            btnBuy.isVisible = true
-                            layoutEmpty.root.isVisible = false
-                        }
+
                         if (data.data.cart.isEmpty()) {
                             binding.apply {
                                 btnBuy.isVisible = false
                                 layoutEmpty.root.isVisible = true
                             }
+                        } else {
+                            binding.apply {
+                                btnBuy.isVisible = true
+                                layoutEmpty.root.isVisible = false
+                            }
                         }
-                        val listCart = data.data.cart
-                        listCart.map { cart ->
-                            deleteCart(token, cart.id)
-                        }
+
+                        cartList = data.data.cart
                     }
                 }
                 is Resource.Error -> {
@@ -103,7 +106,7 @@ class CartActivity : AppCompatActivity() {
         }
     }
 
-    private fun deleteCart(token: String, cartId: Int) {
+    fun deleteCart(token: String) {
         ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             override fun onMove(
                 recyclerView: RecyclerView,
@@ -114,18 +117,15 @@ class CartActivity : AppCompatActivity() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                viewModel.deleteCart(token, cartId).observe(this@CartActivity) {
-                    viewModel.getCarts(token).observe(this@CartActivity) { result ->
-                        when (result) {
-                            is Resource.Success -> {
-                                val cartData = result.data
-                                if (cartData != null) {
-                                    val listCart = cartData.data.cart
-                                    adapter.submitList(listCart)
-                                }
-                            }
-                            else -> {}
+
+                val cartId = cartList[viewHolder.adapterPosition].id
+                viewModel.deleteCart(token, cartId).observe(this@CartActivity) { result ->
+                    when (result) {
+                        is Resource.Loading -> {}
+                        is Resource.Success -> {
+                            getCarts(token)
                         }
+                        is Resource.Error -> {}
                     }
                 }
             }
