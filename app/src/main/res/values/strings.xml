@@ -66,4 +66,9 @@
     <string name="product_count">%sx</string>
     <string name="processed">Diproses</string>
     <string name="payment_method">Metode Pembayaran</string>
+    <string name="shopping_details">Detail Belanja</string>
+    <string name="status">Status</string>
+    <string name="complete_order">Selesaikan Pesanan</string>
+    <string name="entreumart">Entreumart</string>
+    <string name="sub_entreumart">by KWU IKIP Siliwangi</string>
 </resources>

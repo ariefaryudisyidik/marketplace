@@ -28,8 +28,6 @@ class SearchActivity : AppCompatActivity() {
 
         setupRecyclerView()
         searchProduct()
-        getProduct()
-
     }
 
     private fun setupRecyclerView() {
@@ -38,13 +36,13 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun searchProduct() {
-
         binding.apply {
             searchView.requestFocus()
             searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(username: String): Boolean {
                     viewModel.searchProduct(username)
                     searchView.clearFocus()
+                    getProduct()
                     return true
                 }
 

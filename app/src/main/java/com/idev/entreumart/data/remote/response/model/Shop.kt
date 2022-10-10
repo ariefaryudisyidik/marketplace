@@ -19,5 +19,5 @@ data class Shop(
     val createdAt: String?,
     @SerializedName("updated_at")
     val updatedAt: String,
-    val user: User
+    val user: User?
 ) : Parcelable

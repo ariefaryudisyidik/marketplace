@@ -7,9 +7,9 @@ import android.net.Uri
 import android.os.Environment
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
+import com.google.gson.Gson
 import com.idev.entreumart.R
 import com.idev.entreumart.data.remote.response.DefaultResponse
-import com.google.gson.Gson
 import retrofit2.HttpException
 import java.io.ByteArrayOutputStream
 import java.io.File

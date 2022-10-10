@@ -1,8 +1,11 @@
 package com.idev.entreumart.data.remote.response.model
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Wishlist(
     val id: Int,
     @SerializedName("user_id")
@@ -15,4 +18,4 @@ data class Wishlist(
     val updatedAt: String,
     val item: Item,
     val user: User
-)
+): Parcelable
