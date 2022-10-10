@@ -34,12 +34,12 @@ class ShoppingListAdapter(private val activity: ShoppingActivity) :
         fun bind(data: Invoice) {
             binding.apply {
                 Glide.with(itemView)
-                    .load(data.item.picture1)
+                    .load(data.item?.picture1)
                     .centerCrop()
                     .placeholder(R.drawable.ic_image)
                     .into(ivProduct)
-                tvProductName.text = data.item.name
-                tvProductPrice.text = data.item.price.withCurrencyFormat()
+                tvProductName.text = data.item?.name
+                tvProductPrice.text = data.item?.price?.withCurrencyFormat()
                 tvProductCount.text = activity.getString(R.string.product_count, data.quantity)
 
                 val status = when (data.track) {

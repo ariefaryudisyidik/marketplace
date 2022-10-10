@@ -30,6 +30,6 @@ data class Invoice(
     val createdAt: String,
     @SerializedName("updated_at")
     val updatedAt: String,
-    val item: Item,
-    val shop: Shop
+    val item: Item?,
+    val shop: Shop?
 ) : Parcelable

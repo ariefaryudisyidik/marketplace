@@ -71,4 +71,5 @@
     <string name="complete_order">Selesaikan Pesanan</string>
     <string name="entreumart">Entreumart</string>
     <string name="sub_entreumart">by KWU IKIP Siliwangi</string>
+    <string name="upload_payment_proof">Upload Bukti Pembayaran</string>
 </resources>

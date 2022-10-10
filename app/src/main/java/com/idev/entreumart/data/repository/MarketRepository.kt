@@ -11,6 +11,7 @@ import com.idev.entreumart.data.remote.response.model.Item
 import com.idev.entreumart.utils.Resource
 import com.idev.entreumart.utils.getMessage
 import com.idev.entreumart.utils.getString
+import okhttp3.MultipartBody
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
@@ -146,6 +147,23 @@ class MarketRepository @Inject constructor(
         try {
             emit(Resource.Loading())
             val data = api.getInvoice(token)
+            emit(Resource.Success(data))
+        } catch (e: HttpException) {
+            val message = getMessage(e)
+            emit(Resource.Error(message))
+        } catch (e: IOException) {
+            emit(Resource.Error(getString(context, R.string.error_connection)))
+        }
+    }
+
+    fun uploadPayment(
+        token: String,
+        invoiceId: Int,
+        uploadPayment: MultipartBody.Part?
+    ): LiveData<Resource<UploadPaymentResponse>> = liveData {
+        try {
+            emit(Resource.Loading())
+            val data = api.uploadPayment(token, invoiceId, uploadPayment)
             emit(Resource.Success(data))
         } catch (e: HttpException) {
             val message = getMessage(e)

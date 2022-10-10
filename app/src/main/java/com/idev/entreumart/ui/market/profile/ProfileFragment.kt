@@ -93,7 +93,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private fun startGallery() {
-        val launcherIntentGallery = registerForActivityResult(
+        val intentGalleryLauncher = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
         ) {
             if (it.resultCode == AppCompatActivity.RESULT_OK) {
@@ -111,7 +111,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             val intent = Intent()
             intent.action = Intent.ACTION_GET_CONTENT
             intent.type = "image/*"
-            launcherIntentGallery.launch(intent)
+            intentGalleryLauncher.launch(intent)
         }
     }
 
