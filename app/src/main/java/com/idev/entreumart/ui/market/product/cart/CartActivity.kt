@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.idev.entreumart.data.remote.response.model.Cart
 import com.idev.entreumart.databinding.ActivityCartBinding
 import com.idev.entreumart.ui.market.adapter.CartListAdapter
-import com.idev.entreumart.ui.market.product.buy.BuyActivity
+import com.idev.entreumart.ui.market.product.checkout.CheckoutActivity
 import com.idev.entreumart.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -34,15 +34,16 @@ class CartActivity : AppCompatActivity() {
 
     private fun buy() {
         binding.apply {
-            viewModel.product.observe(this@CartActivity) { product ->
+            viewModel.product.observe(this@CartActivity) { cart ->
                 viewModel.productCount.observe(this@CartActivity) { count ->
-                    btnBuy.setOnClickListener {
-                        val totalPrice = tvTotal.text.toString()
-                        val intent = Intent(this@CartActivity, BuyActivity::class.java)
-                        intent.putExtra(EXTRA_PRODUCT, product)
-                        intent.putExtra(EXTRA_PRODUCT_COUNT, count)
-                        intent.putExtra(EXTRA_TOTAL_PRICE, totalPrice)
-                        startActivity(intent)
+                    viewModel.price.observe(this@CartActivity) { total ->
+                        btnBuy.setOnClickListener {
+                            val intent = Intent(this@CartActivity, CheckoutActivity::class.java)
+                            intent.putExtra(EXTRA_CART, cart)
+                            intent.putExtra(EXTRA_PRODUCT_COUNT, count)
+                            intent.putExtra(EXTRA_TOTAL_PRICE, total)
+                            startActivity(intent)
+                        }
                     }
                 }
             }

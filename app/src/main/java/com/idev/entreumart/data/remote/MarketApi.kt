@@ -1,5 +1,6 @@
 package com.idev.entreumart.data.remote
 
+import com.idev.entreumart.data.remote.request.CheckoutRequest
 import com.idev.entreumart.data.remote.request.LoginRequest
 import com.idev.entreumart.data.remote.request.RegisterRequest
 import com.idev.entreumart.data.remote.response.*
@@ -79,4 +80,11 @@ interface MarketApi {
         @Header("Authorization") token: String,
         @Path("id") id: Int
     ): WishlistResponse
+
+    @POST("carts/checkout/{id}")
+    suspend fun checkout(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int,
+        @Body checkout: CheckoutRequest
+    ): CheckoutResponse
 }

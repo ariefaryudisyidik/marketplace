@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.market.product.buy.BuyActivity">
+    tools:context=".ui.market.product.checkout.CheckoutActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
@@ -22,9 +22,10 @@
             android:layout_height="wrap_content"
             android:padding="8dp">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/iv_product"
                 android:layout_width="76dp"
+                app:shapeAppearanceOverlay="@style/cornerRounded"
                 android:layout_height="76dp"
                 android:contentDescription="@string/description"
                 android:src="@drawable/img_product"
@@ -37,7 +38,7 @@
                 style="@style/Text.Bold"
                 android:layout_width="0dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:maxLines="2"
                 android:text="@string/dummy_product"
@@ -63,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/dummy_initial_numberx"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tv_product_price"
@@ -111,6 +112,7 @@
             android:padding="16dp">
 
             <RadioGroup
+                android:id="@+id/rg_payment_method"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -121,7 +123,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <RadioButton
-                    android:id="@+id/radioButton"
+                    android:id="@+id/rb_cod"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableEnd="@drawable/ic_cod"
@@ -130,7 +132,7 @@
                     android:text="@string/cod" />
 
                 <RadioButton
-                    android:id="@+id/radioButton2"
+                    android:id="@+id/rb_transfer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableEnd="@drawable/ic_bank_btn"

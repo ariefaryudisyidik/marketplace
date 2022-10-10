@@ -63,10 +63,9 @@ class CartListAdapter(
                         notifyDataSetChanged()
                     }
                     if (radioButton.isChecked) {
-                        val item = data.item
                         viewModel.apply {
                             incrementCount(count * price)
-                            getProduct(item)
+                            getProduct(data)
                             getProductCount(count)
                         }
                     } else {

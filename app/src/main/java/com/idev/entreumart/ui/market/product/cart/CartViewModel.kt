@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.idev.entreumart.data.local.datastore.UserPreference
-import com.idev.entreumart.data.remote.response.model.Item
+import com.idev.entreumart.data.remote.response.model.Cart
 import com.idev.entreumart.data.repository.MarketRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -22,7 +22,7 @@ class CartViewModel @Inject constructor(
     val counter = MutableLiveData(0)
     val price = MutableLiveData(0)
     val productCount = MutableLiveData(0)
-    val product = MutableLiveData<Item>()
+    val product = MutableLiveData<Cart>()
 
     fun getPrice(value: Int) {
         price.postValue(value)
@@ -40,7 +40,7 @@ class CartViewModel @Inject constructor(
         productCount.postValue(value)
     }
 
-    fun getProduct(value: Item) {
+    fun getProduct(value: Cart) {
         product.postValue(value)
     }
 

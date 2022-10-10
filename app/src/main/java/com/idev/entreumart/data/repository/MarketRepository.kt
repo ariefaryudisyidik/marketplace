@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.idev.entreumart.R
 import com.idev.entreumart.data.remote.MarketApi
+import com.idev.entreumart.data.remote.request.CheckoutRequest
 import com.idev.entreumart.data.remote.response.*
 import com.idev.entreumart.data.remote.response.model.Item
 import com.idev.entreumart.utils.Resource
@@ -115,6 +116,23 @@ class MarketRepository @Inject constructor(
         try {
             emit(Resource.Loading())
             val data = api.deleteWishlist(token, id)
+            emit(Resource.Success(data))
+        } catch (e: HttpException) {
+            val message = getMessage(e)
+            emit(Resource.Error(message))
+        } catch (e: IOException) {
+            emit(Resource.Error(getString(context, R.string.error_connection)))
+        }
+    }
+
+    fun checkout(
+        token: String,
+        id: Int,
+        checkoutRequest: CheckoutRequest
+    ): LiveData<Resource<CheckoutResponse>> = liveData {
+        try {
+            emit(Resource.Loading())
+            val data = api.checkout(token, id, checkoutRequest)
             emit(Resource.Success(data))
         } catch (e: HttpException) {
             val message = getMessage(e)
