@@ -87,4 +87,9 @@ interface MarketApi {
         @Path("id") id: Int,
         @Body checkout: CheckoutRequest
     ): CheckoutResponse
+
+    @GET("invoices")
+    suspend fun getInvoice(
+        @Header("Authorization") token: String
+    ):InvoiceResponse
 }

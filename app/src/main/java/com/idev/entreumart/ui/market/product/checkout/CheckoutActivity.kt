@@ -3,6 +3,7 @@ package com.idev.entreumart.ui.market.product.checkout
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
@@ -12,6 +13,7 @@ import com.idev.entreumart.R
 import com.idev.entreumart.data.remote.request.CheckoutRequest
 import com.idev.entreumart.data.remote.response.model.Cart
 import com.idev.entreumart.databinding.ActivityCheckoutBinding
+import com.idev.entreumart.ui.market.product.shopping.ShoppingActivity
 import com.idev.entreumart.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -100,14 +102,10 @@ class CheckoutActivity : AppCompatActivity() {
                                     }
                                     is Resource.Success -> {
                                         showLoading(false)
-                                        val data = result.data
-                                        if (data != null) {
-                                            Log.d(TAG, "success: ${data.message}")
-                                        }
+                                        navigateToShopping()
                                     }
                                     is Resource.Error -> {
                                         showLoading(false)
-                                        Log.d(TAG, "error: ${result.message}")
                                     }
                                 }
                             }
@@ -121,5 +119,10 @@ class CheckoutActivity : AppCompatActivity() {
         if (state) showProgress(this)
         else hideProgress()
         window.decorView.clearFocus()
+    }
+
+    private fun navigateToShopping() {
+        startActivity(Intent(this, ShoppingActivity::class.java))
+        finish()
     }
 }

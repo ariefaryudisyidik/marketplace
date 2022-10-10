@@ -19,84 +19,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_shopping"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        app:cardCornerRadius="8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9">
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        tools:listitem="@layout/item_shopping" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp">
-
-            <ImageView
-                android:id="@+id/iv_product"
-                android:layout_width="76dp"
-                android:layout_height="76dp"
-                android:contentDescription="@string/description"
-                android:src="@drawable/img_product"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_product_name"
-                style="@style/Text.Bold"
-                android:layout_width="0dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:maxLines="2"
-                android:text="@string/dummy_product"
-                android:textColor="?android:attr/textColorPrimary"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/tv_product_price"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/iv_product"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_product_price"
-                style="@style/Text.Normal"
-                android:layout_width="0dp"
-                android:text="@string/dummy_price"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="@+id/tv_product_name"
-                app:layout_constraintStart_toStartOf="@+id/tv_product_name"
-                app:layout_constraintTop_toBottomOf="@id/guideline" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="38dp" />
-
-            <TextView
-                android:id="@+id/tv_product_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/dummy_initial_numberx"
-                app:layout_constraintStart_toStartOf="@+id/tv_product_price"
-                app:layout_constraintTop_toBottomOf="@+id/tv_product_price" />
-
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:text="@string/processed"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tv_product_count"
-                app:layout_constraintTop_toBottomOf="@+id/tv_product_count" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -141,4 +141,17 @@ class MarketRepository @Inject constructor(
             emit(Resource.Error(getString(context, R.string.error_connection)))
         }
     }
+
+    fun getInvoice(token: String): LiveData<Resource<InvoiceResponse>> = liveData {
+        try {
+            emit(Resource.Loading())
+            val data = api.getInvoice(token)
+            emit(Resource.Success(data))
+        } catch (e: HttpException) {
+            val message = getMessage(e)
+            emit(Resource.Error(message))
+        } catch (e: IOException) {
+            emit(Resource.Error(getString(context, R.string.error_connection)))
+        }
+    }
 }
