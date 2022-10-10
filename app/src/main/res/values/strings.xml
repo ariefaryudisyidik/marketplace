@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Marketplace</string>
-    <string name="app_version">v 0.1-Beta</string>
+    <string name="app_name">Entreumart</string>
+    <string name="app_version">Entreumart\nby KWU IKIP Siliwangi</string>
     <string name="icon_app">Icon App</string>
     <string name="welcome">Selamat Datang!</string>
     <string name="email">Email</string>

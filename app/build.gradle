@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace 'com.excode.marketplace'
+    namespace 'com.idev.entreumart'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.excode.marketplace"
+        applicationId 'com.idev.entreumart'
         minSdk 21
         targetSdk 33
         versionCode 1

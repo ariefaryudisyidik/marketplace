@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.excode.marketplace.ui.market.home.HomeFragment"
+        android:name="com.idev.entreumart.ui.market.home.HomeFragment"
         android:label="@string/home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_profile"
-        android:name="com.excode.marketplace.ui.market.profile.ProfileFragment"
+        android:name="com.idev.entreumart.ui.market.profile.ProfileFragment"
         android:label="@string/profile"
         tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/nav_about"
-        android:name="com.excode.marketplace.ui.market.about.AboutFragment"
+        android:name="com.idev.entreumart.ui.market.about.AboutFragment"
         android:label="@string/about"
         tools:layout="@layout/fragment_about" />
 </navigation>
