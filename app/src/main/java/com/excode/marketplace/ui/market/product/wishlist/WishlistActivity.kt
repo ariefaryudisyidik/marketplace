@@ -18,6 +18,7 @@ class WishlistActivity : AppCompatActivity() {
     private lateinit var binding: ActivityWishlistBinding
     private val viewModel: WishlistViewModel by viewModels()
     private lateinit var adapter: WishlistAdapter
+    private var isWishlist: Boolean? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +40,7 @@ class WishlistActivity : AppCompatActivity() {
         }
     }
 
-    private fun getWishlist(token: String) {
+    fun getWishlist(token: String) {
         viewModel.getWishlist(token).observe(this) { result ->
             when (result) {
                 is Resource.Loading -> {
@@ -50,12 +51,8 @@ class WishlistActivity : AppCompatActivity() {
                     val data = result.data
                     if (data != null) {
                         adapter.submitList(data.data.wishlist)
-                        binding.layoutEmpty.root.isVisible = false
-                        if (data.data.wishlist.isEmpty()) {
-                            binding.apply {
-                                layoutEmpty.root.isVisible = true
-                            }
-                        }
+                        isWishlist = data.data.wishlist.isEmpty()
+                        emptyState()
                     }
 
                 }
@@ -78,5 +75,9 @@ class WishlistActivity : AppCompatActivity() {
 
     private fun showMessage(message: String?) {
         toast(message)
+    }
+
+    private fun emptyState() {
+        binding.layoutEmpty.root.isVisible = isWishlist == true
     }
 }

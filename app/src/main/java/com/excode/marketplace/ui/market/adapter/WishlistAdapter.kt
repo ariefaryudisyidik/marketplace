@@ -1,6 +1,5 @@
 package com.excode.marketplace.ui.market.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
@@ -11,12 +10,13 @@ import com.bumptech.glide.Glide
 import com.excode.marketplace.R
 import com.excode.marketplace.data.remote.response.model.Wishlist
 import com.excode.marketplace.databinding.ItemWishlistBinding
+import com.excode.marketplace.ui.market.product.wishlist.WishlistActivity
 import com.excode.marketplace.ui.market.product.wishlist.WishlistViewModel
 import com.excode.marketplace.utils.Resource
 import com.excode.marketplace.utils.withCurrencyFormat
 
 class WishlistAdapter(
-    private val context: Context,
+    private val activity: WishlistActivity,
     private val viewModel: WishlistViewModel,
     private val lifecycleOwner: LifecycleOwner
 ) :
@@ -37,7 +37,7 @@ class WishlistAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(wishlist: Wishlist) {
             binding.apply {
-                Glide.with(context)
+                Glide.with(activity)
                     .load(wishlist.item.picture1)
                     .centerCrop()
                     .placeholder(R.drawable.ic_image)
@@ -46,19 +46,16 @@ class WishlistAdapter(
                 tvProductPrice.text = wishlist.item.price.withCurrencyFormat()
                 viewModel.token.observe(lifecycleOwner) { token ->
                     ivWishlist.setOnClickListener {
-                        viewModel.deleteWishlist(token, wishlist.id).observe(lifecycleOwner) {
-                            viewModel.getWishlist(token).observe(lifecycleOwner) { result ->
+                        viewModel.deleteWishlist(token, wishlist.id)
+                            .observe(lifecycleOwner) { result ->
                                 when (result) {
+                                    is Resource.Loading -> {}
                                     is Resource.Success -> {
-                                        val item = result.data
-                                        if (item != null) {
-                                            submitList(item.data.wishlist)
-                                        }
+                                        activity.getWishlist(token)
                                     }
-                                    else -> {}
+                                    is Resource.Error -> {}
                                 }
                             }
-                        }
                     }
                 }
             }

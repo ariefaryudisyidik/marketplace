@@ -77,6 +77,7 @@ class CartActivity : AppCompatActivity() {
                     showLoading(false)
                     val data = result.data
                     if (data != null) {
+                        cartList = data.data.cart
                         adapter.submitList(data.data.cart)
                         setTotalPrice()
 
@@ -91,8 +92,6 @@ class CartActivity : AppCompatActivity() {
                                 layoutEmpty.root.isVisible = false
                             }
                         }
-
-                        cartList = data.data.cart
                     }
                 }
                 is Resource.Error -> {
@@ -106,7 +105,7 @@ class CartActivity : AppCompatActivity() {
         }
     }
 
-    fun deleteCart(token: String) {
+    private fun deleteCart(token: String) {
         ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             override fun onMove(
                 recyclerView: RecyclerView,
@@ -117,7 +116,6 @@ class CartActivity : AppCompatActivity() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-
                 val cartId = cartList[viewHolder.adapterPosition].id
                 viewModel.deleteCart(token, cartId).observe(this@CartActivity) { result ->
                     when (result) {
@@ -142,21 +140,3 @@ class CartActivity : AppCompatActivity() {
         toast(message)
     }
 }
-
-
-//override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-//    viewModel.deleteCart(token, cartId).observe(this@CartActivity) {
-//        viewModel.getCarts(token).observe(this@CartActivity) { result ->
-//            when (result) {
-//                is Resource.Success -> {
-//                    val cartData = result.data
-//                    if (cartData != null) {
-//                        val listCart = cartData.data.cart
-//                        adapter.submitList(listCart)
-//                    }
-//                }
-//                else -> {}
-//            }
-//        }
-//    }).attachToRecyclerView(binding.rvCart)
-//}
