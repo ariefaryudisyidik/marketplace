@@ -25,13 +25,13 @@ class DetailShoppingViewModel @Inject constructor(
     fun uploadPayment(
         token: String,
         invoiceId: Int,
-        picture: File? = null
+        uploadPayment: File? = null
     ): LiveData<Resource<UploadPaymentResponse>> {
-        val reqImageFile = picture?.asRequestBody("image/jpeg".toMediaType())
+        val reqImageFile = uploadPayment?.asRequestBody("image/jpeg".toMediaType())
         val imageMultipart: MultipartBody.Part? = reqImageFile?.let {
             MultipartBody.Part.createFormData(
-                "picture",
-                picture.name,
+                "payment_upload",
+                uploadPayment.name,
                 it
             )
         }

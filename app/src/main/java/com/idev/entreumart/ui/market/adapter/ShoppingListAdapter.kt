@@ -43,11 +43,10 @@ class ShoppingListAdapter(private val activity: ShoppingActivity) :
                 tvProductCount.text = activity.getString(R.string.product_count, data.quantity)
 
                 val status = when (data.track) {
-                    "0" -> "Waiting for confirm payment"
-                    "1" -> "Payment confirm, on process"
-                    "2" -> "Shipped"
-                    "3" -> "Delivered"
-                    else -> null
+                    "0" -> "Menunggu konfirmasi pembayaran"
+                    "1" -> "Konfirmasi pembayaran, sedang diproses"
+                    "2" -> "Dikirim"
+                    else -> "Delivered"
                 }
 
                 tvStatus.text = status

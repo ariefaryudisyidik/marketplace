@@ -72,4 +72,5 @@
     <string name="entreumart">Entreumart</string>
     <string name="sub_entreumart">by KWU IKIP Siliwangi</string>
     <string name="upload_payment_proof">Upload Bukti Pembayaran</string>
+    <string name="payment_proof">Bukti Pembayaran</string>
 </resources>

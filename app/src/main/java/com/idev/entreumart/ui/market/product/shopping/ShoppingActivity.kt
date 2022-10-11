@@ -51,11 +51,9 @@ class ShoppingActivity : AppCompatActivity() {
                     if (data != null) {
                         adapter.submitList(data.data.invoices)
                     }
-                    Log.d(TAG, "Success: ${data?.message}")
                 }
                 is Resource.Error -> {
                     showLoading(false)
-                    Log.d(TAG, "Error: ${result.data?.message}")
                 }
             }
         }

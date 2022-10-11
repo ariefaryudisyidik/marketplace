@@ -30,6 +30,14 @@ interface MarketApi {
         @Part("phone_number") phoneNumber: RequestBody,
     ): UserResponse
 
+    @Multipart
+    @POST("invoices/upload-payment-proof/{invoiceId}")
+    suspend fun uploadPayment(
+        @Header("Authorization") token: String,
+        @Path("invoiceId") invoiceId: Int,
+        @Part paymentUpload: MultipartBody.Part?
+    ): UploadPaymentResponse
+
     @GET("user/profile")
     suspend fun getUser(
         @Header("Authorization") token: String,
@@ -92,12 +100,4 @@ interface MarketApi {
     suspend fun getInvoice(
         @Header("Authorization") token: String
     ): InvoiceResponse
-
-    @Multipart
-    @POST("invoices/upload-payment-proof/{invoiceId}")
-    suspend fun uploadPayment(
-        @Header("Authorization") token: String,
-        @Path("invoiceId") invoiceId: Int,
-        @Part paymentUpload: MultipartBody.Part?
-    ): UploadPaymentResponse
 }

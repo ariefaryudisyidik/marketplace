@@ -28,6 +28,7 @@ class SearchActivity : AppCompatActivity() {
 
         setupRecyclerView()
         searchProduct()
+        searchResult()
     }
 
     private fun setupRecyclerView() {
@@ -42,7 +43,6 @@ class SearchActivity : AppCompatActivity() {
                 override fun onQueryTextSubmit(username: String): Boolean {
                     viewModel.searchProduct(username)
                     searchView.clearFocus()
-                    getProduct()
                     return true
                 }
 
@@ -53,7 +53,7 @@ class SearchActivity : AppCompatActivity() {
         }
     }
 
-    private fun getProduct() {
+    private fun searchResult() {
         viewModel.products.observe(this) { showProduct(it) }
     }
 

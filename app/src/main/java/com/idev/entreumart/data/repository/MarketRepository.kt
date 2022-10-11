@@ -159,7 +159,7 @@ class MarketRepository @Inject constructor(
     fun uploadPayment(
         token: String,
         invoiceId: Int,
-        uploadPayment: MultipartBody.Part?
+        uploadPayment: MultipartBody.Part? = null
     ): LiveData<Resource<UploadPaymentResponse>> = liveData {
         try {
             emit(Resource.Loading())

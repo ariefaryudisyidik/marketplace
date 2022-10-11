@@ -5,7 +5,6 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
@@ -90,10 +89,7 @@ class CheckoutActivity : AppCompatActivity() {
                                 total = total,
                                 paymentMethod = paymentMethod
                             )
-                        Log.d(
-                            TAG,
-                            "$token, ${cart.id}, $quantity, ${cart.item.price}, $total, $paymentMethod"
-                        )
+
                         viewModel.checkout(token, cart.id, checkoutRequest)
                             .observe(this@CheckoutActivity) { result ->
                                 when (result) {
@@ -110,6 +106,8 @@ class CheckoutActivity : AppCompatActivity() {
                                 }
                             }
                     }
+                } else {
+                    toast("Silahkan pilih metode pembayaran!")
                 }
             }
         }

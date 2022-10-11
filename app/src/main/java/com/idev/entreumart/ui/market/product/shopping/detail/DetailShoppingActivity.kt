@@ -3,10 +3,10 @@ package com.idev.entreumart.ui.market.product.shopping.detail
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.idev.entreumart.R
 import com.idev.entreumart.data.remote.response.model.Invoice
@@ -43,7 +43,7 @@ class DetailShoppingActivity : AppCompatActivity() {
         val intentGalleryLauncher = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
         ) {
-            if (it.resultCode == AppCompatActivity.RESULT_OK) {
+            if (it.resultCode == RESULT_OK) {
                 val selectedImg = it.data?.data as Uri
                 val file = uriToFile(selectedImg, this)
                 getFile = file
@@ -66,20 +66,20 @@ class DetailShoppingActivity : AppCompatActivity() {
         val invoice = intent.getParcelableExtra<Invoice>(EXTRA_INVOICE) as Invoice
         binding.apply {
             val trackStatus = when (invoice.track) {
-                "0" -> "Waiting for confirm payment"
-                "1" -> "Payment confirm, on process"
-                "2" -> "Shipped"
+                "0" -> "Menunggu konfirmasi pembayaran"
+                "1" -> "Konfirmasi pembayaran, sedang diproses"
+                "2" -> "Dikirim"
                 else -> "Delivered"
             }
 
             val paymentMethod = when (invoice.paymentMethod) {
                 "0" -> "Cash On Delivery (COD)"
-                else -> "Bank Transfer"
+                else -> "Transfer Bank"
             }
 
             val paymentStatus = when (invoice.paymentStatus) {
-                "0" -> "Unpaid"
-                "1" -> "Paid but not yet checked"
+                "0" -> "Belum dibayar"
+                "1" -> "Sudah bayar, "
                 else -> "Paid"
             }
 
@@ -95,6 +95,18 @@ class DetailShoppingActivity : AppCompatActivity() {
             tvPaymentMethod.text = paymentMethod
             tvPaymentStatus.text = paymentStatus
             tvTotalPayment.text = invoice.total.withCurrencyFormat()
+
+            if (invoice.track != "0") {
+                ivUploadPayment.isEnabled = false
+                btnCompleteOrder.isVisible = false
+                tvTitleUpload.isVisible = false
+                tvTitlePaymentStatus.isVisible = true
+                Glide.with(this@DetailShoppingActivity)
+                    .load(invoice.item?.picture1)
+                    .placeholder(R.drawable.ic_image)
+                    .centerCrop()
+                    .into(ivUploadPayment)
+            }
         }
     }
 
@@ -104,27 +116,27 @@ class DetailShoppingActivity : AppCompatActivity() {
             var picture: File? = null
             if (getFile != null) {
                 picture = reduceFileImage(getFile as File)
-            }
-            viewModel.uploadPayment(token, invoice.id, picture).observe(this) { result ->
-                when (result) {
-                    is Resource.Loading -> {
-                        showLoading(true)
-                    }
-                    is Resource.Success -> {
-                        showLoading(false)
-                        val data = result.data
-                        if (data != null) {
-                            toast(data.message)
-                            Log.d(TAG, "Success: ${data.message} ")
+                viewModel.uploadPayment(token, invoice.id, picture).observe(this) { result ->
+                    when (result) {
+                        is Resource.Loading -> {
+                            showLoading(true)
                         }
-                        finish()
-                    }
-                    is Resource.Error -> {
-                        showLoading(false)
-                        toast(result.message)
-                        Log.d(TAG, "Success: ${result.message} ")
+                        is Resource.Success -> {
+                            showLoading(false)
+                            val data = result.data
+                            if (data != null) {
+                                toast(data.message)
+                            }
+                            finish()
+                        }
+                        is Resource.Error -> {
+                            showLoading(false)
+                            toast(result.message)
+                        }
                     }
                 }
+            } else {
+                toast("Silahkan upload bukti pembayaran")
             }
         }
     }
