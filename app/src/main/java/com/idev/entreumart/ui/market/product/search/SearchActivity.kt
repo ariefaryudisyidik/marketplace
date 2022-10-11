@@ -79,14 +79,9 @@ class SearchActivity : AppCompatActivity() {
                 }
                 is Resource.Error -> {
                     showLoading(false)
-                    showMessage(result.message)
                     binding.layoutEmpty.root.isVisible = true
                 }
             }
         }
-    }
-
-    private fun showMessage(message: String?) {
-        toast(message)
     }
 }

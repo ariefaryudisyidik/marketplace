@@ -131,6 +131,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/status"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/tv_payment_status"
         app:layout_constraintStart_toStartOf="@+id/cardView2" />
 
@@ -150,6 +151,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/payment_method"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/tv_payment_method"
         app:layout_constraintStart_toStartOf="@+id/tv_payment_status" />
 

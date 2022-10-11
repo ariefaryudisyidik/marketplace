@@ -102,10 +102,16 @@ class DetailShoppingActivity : AppCompatActivity() {
                 tvTitleUpload.isVisible = false
                 tvTitlePaymentStatus.isVisible = true
                 Glide.with(this@DetailShoppingActivity)
-                    .load(invoice.item?.picture1)
+                    .load(invoice.paymentUpload)
                     .placeholder(R.drawable.ic_image)
                     .centerCrop()
                     .into(ivUploadPayment)
+            }
+
+            if (invoice.paymentMethod == "0"){
+                ivUploadPayment.isVisible = false
+                btnCompleteOrder.isVisible = false
+                tvTitlePaymentStatus.isVisible = false
             }
         }
     }
