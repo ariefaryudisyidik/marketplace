@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.market.product.shopping.detail.DetailShoppingActivity">
 
-    =
-
     <TextView
         android:id="@+id/tv_title_upload"
         android:layout_width="wrap_content"
