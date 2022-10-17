@@ -12,11 +12,11 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId 'com.abercode_software.kwu_marketplace'
+        applicationId 'com.idev.entreumart'
         minSdk 21
         targetSdk 33
-        versionCode 5
-        versionName "1.1"
+        versionCode 1
+        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
