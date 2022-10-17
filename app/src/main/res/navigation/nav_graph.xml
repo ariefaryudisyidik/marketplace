@@ -22,4 +22,9 @@
         android:name="com.idev.entreumart.ui.market.about.AboutFragment"
         android:label="@string/about"
         tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/nav_shopping"
+        android:name="com.idev.entreumart.ui.market.shopping.ShoppingFragment"
+        android:label="ShoppingFragment"
+        tools:layout="@layout/fragment_shopping"/>
 </navigation>

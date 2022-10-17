@@ -73,4 +73,6 @@
     <string name="sub_entreumart">by KWU IKIP Siliwangi</string>
     <string name="upload_payment_proof">Upload Bukti Pembayaran</string>
     <string name="payment_proof">Bukti Pembayaran</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

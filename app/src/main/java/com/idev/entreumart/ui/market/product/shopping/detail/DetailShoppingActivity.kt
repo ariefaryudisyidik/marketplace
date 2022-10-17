@@ -112,6 +112,7 @@ class DetailShoppingActivity : AppCompatActivity() {
                 ivUploadPayment.isVisible = false
                 btnCompleteOrder.isVisible = false
                 tvTitlePaymentStatus.isVisible = false
+                tvTitleUpload.isVisible = false
             }
         }
     }
