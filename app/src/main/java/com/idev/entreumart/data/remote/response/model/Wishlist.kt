@@ -18,4 +18,4 @@ data class Wishlist(
     val updatedAt: String,
     val item: Item,
     val user: User
-): Parcelable
+) : Parcelable

@@ -18,4 +18,4 @@ data class Cart(
     @SerializedName("updated_at")
     val updatedAt: String,
     val item: Item
-): Parcelable
+) : Parcelable

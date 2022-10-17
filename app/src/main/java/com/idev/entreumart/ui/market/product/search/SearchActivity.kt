@@ -11,7 +11,6 @@ import com.idev.entreumart.ui.market.adapter.ProductGridAdapter
 import com.idev.entreumart.utils.Resource
 import com.idev.entreumart.utils.hideProgress
 import com.idev.entreumart.utils.showProgress
-import com.idev.entreumart.utils.toast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

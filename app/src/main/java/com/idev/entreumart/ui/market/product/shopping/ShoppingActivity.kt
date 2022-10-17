@@ -1,13 +1,11 @@
 package com.idev.entreumart.ui.market.product.shopping
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.idev.entreumart.databinding.ActivityShoppingBinding
 import com.idev.entreumart.ui.market.adapter.ShoppingListAdapter
 import com.idev.entreumart.utils.Resource
-import com.idev.entreumart.utils.TAG
 import com.idev.entreumart.utils.hideProgress
 import com.idev.entreumart.utils.showProgress
 import dagger.hilt.android.AndroidEntryPoint

@@ -1,9 +1,9 @@
 package com.idev.entreumart.di
 
 import androidx.viewbinding.BuildConfig
+import com.google.gson.GsonBuilder
 import com.idev.entreumart.data.remote.MarketApi
 import com.idev.entreumart.utils.BASE_URL
-import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

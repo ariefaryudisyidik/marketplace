@@ -108,7 +108,7 @@ class DetailShoppingActivity : AppCompatActivity() {
                     .into(ivUploadPayment)
             }
 
-            if (invoice.paymentMethod == "0"){
+            if (invoice.paymentMethod == "0") {
                 ivUploadPayment.isVisible = false
                 btnCompleteOrder.isVisible = false
                 tvTitlePaymentStatus.isVisible = false

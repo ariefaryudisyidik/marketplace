@@ -11,7 +11,6 @@ import com.idev.entreumart.data.remote.response.model.Cart
 import com.idev.entreumart.databinding.ActivityCartBinding
 import com.idev.entreumart.ui.market.adapter.CartListAdapter
 import com.idev.entreumart.ui.market.product.checkout.CheckoutActivity
-import com.idev.entreumart.ui.market.product.shopping.ShoppingActivity
 import com.idev.entreumart.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 
