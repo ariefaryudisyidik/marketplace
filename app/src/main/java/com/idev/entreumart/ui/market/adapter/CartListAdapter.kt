@@ -57,11 +57,12 @@ class CartListAdapter(
                 radioButton.setOnCheckedChangeListener { _, b ->
                     if (b) {
                         selectedPosition = adapterPosition
+                        lifecycleOwner.lifecycleScope.launch {
+                            delay(1)
+                            notifyDataSetChanged()
+                        }
                     }
-                    lifecycleOwner.lifecycleScope.launch {
-                        delay(1)
-                        notifyDataSetChanged()
-                    }
+
                     if (radioButton.isChecked) {
                         viewModel.apply {
                             incrementCount(count * price)
@@ -71,8 +72,9 @@ class CartListAdapter(
                     } else {
                         viewModel.decrementCount(count * price)
                     }
-                    viewModel.counter.observe(lifecycleOwner) { price ->
-                        viewModel.getPrice(price)
+
+                    viewModel.counter.observe(lifecycleOwner) { te ->
+                        viewModel.getPrice(te)
                     }
                 }
 

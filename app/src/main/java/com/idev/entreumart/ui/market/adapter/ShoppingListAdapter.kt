@@ -2,6 +2,7 @@ package com.idev.entreumart.ui.market.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -33,6 +34,7 @@ class ShoppingListAdapter(private val context: Context) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Invoice) {
             binding.apply {
+                Log.d("TAG", "data: $data")
                 Glide.with(itemView)
                     .load(data.item?.picture1)
                     .centerCrop()

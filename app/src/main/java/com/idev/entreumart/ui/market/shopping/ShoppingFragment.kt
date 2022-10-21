@@ -2,6 +2,7 @@ package com.idev.entreumart.ui.market.shopping
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.idev.entreumart.R
@@ -55,6 +56,17 @@ class ShoppingFragment : Fragment(R.layout.fragment_shopping) {
                     val data = result.data
                     if (data != null) {
                         adapter.submitList(data.data.invoices)
+                        if (data.data.invoices.isEmpty()) {
+                            binding.apply {
+                                rvShopping.isVisible = false
+                                layoutEmpty.root.isVisible = true
+                            }
+                        } else {
+                            binding.apply {
+                                rvShopping.isVisible = true
+                                layoutEmpty.root.isVisible = false
+                            }
+                        }
                     }
                 }
                 is Resource.Error -> {

@@ -11,10 +11,7 @@ import com.idev.entreumart.R
 import com.idev.entreumart.data.remote.response.model.Item
 import com.idev.entreumart.databinding.ActivityDetailProductBinding
 import com.idev.entreumart.ui.market.product.cart.CartActivity
-import com.idev.entreumart.utils.EXTRA_POSITION
-import com.idev.entreumart.utils.EXTRA_PRODUCT
-import com.idev.entreumart.utils.Resource
-import com.idev.entreumart.utils.withCurrencyFormat
+import com.idev.entreumart.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -121,8 +118,7 @@ class DetailProductActivity : AppCompatActivity() {
                         finish()
                     }
                     is Resource.Error -> {
-                        startActivity(Intent(this, CartActivity::class.java))
-                        finish()
+                        toast(result.message)
                     }
                 }
             }

@@ -10,7 +10,7 @@ data class ProfileData(
     @SerializedName("phone_number")
     val phoneNumber: String,
     val role: String,
-    val picture: String,
+    val picture: String?,
     @SerializedName("email_verified_at")
     val emailVerifiedAt: Any?,
     @SerializedName("created_at")
